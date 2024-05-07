@@ -1,8 +1,12 @@
+import React from "react";
+import SignUp from "./(auth)/Sign-up";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div className="">
- Home
-  </div>
+    <div>
+      <SignUp />
+    </div>
   );
-}
+};
+
+export default HomePage;
