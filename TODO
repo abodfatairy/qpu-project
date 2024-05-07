@@ -1,6 +1,6 @@
     [x] create project
     [x] create sign-up
-    [] create sign-in
+    [x] create sign-in
     [] create homePage {
     []header{
     []descktop header

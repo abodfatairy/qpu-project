@@ -41,7 +41,7 @@ export function SignUpForm() {
       password: "",
       email: "",
       addrses: "",
-      age: '',
+      age: "",
     },
   });
   // ...
@@ -54,7 +54,7 @@ export function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-8'
+        className='space-y-8 w-full bg-white'
       >
         <FormField
           control={form.control}
@@ -64,7 +64,7 @@ export function SignUpForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='Email'
+                  placeholder='example@example.com'
                   {...field}
                 />
               </FormControl>
@@ -80,7 +80,7 @@ export function SignUpForm() {
               <FormLabel>User Name</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='Ahmad..'
+                  placeholder='example:Ahmad'
                   {...field}
                 />
               </FormControl>
@@ -113,7 +113,7 @@ export function SignUpForm() {
               <FormLabel>Addrses</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='damas'
+                  placeholder='example:damas'
                   {...field}
                 />
               </FormControl>

@@ -11,14 +11,14 @@ import Autoplay from "embla-carousel-autoplay";
 const AuthCarousel = () => {
   return (
     <Carousel
-      className='  w-[400px]'
+      className='  w-[400px]  rounded-lg'
       plugins={[
         Autoplay({
           delay: 3000,
         }),
       ]}
     >
-      <CarouselContent className=' w-[400px]'>
+      <CarouselContent className=' w-[400px]  rounded-lg'>
         <CarouselItem className='w-[400px]'>
           <div
             className=' w-[400px] h-[600px]  rounded-lg '
@@ -28,7 +28,7 @@ const AuthCarousel = () => {
             }}
           ></div>
         </CarouselItem>
-        <CarouselItem className='w-[400px]'>
+        <CarouselItem className='w-[400px]  rounded-lg'>
           <div
             className=' w-[400px] h-[600px]   rounded-lg '
             style={{
@@ -37,7 +37,7 @@ const AuthCarousel = () => {
             }}
           ></div>
         </CarouselItem>
-        <CarouselItem className='w-[400px]'>
+        <CarouselItem className='w-[400px]  rounded-lg'>
           <div
             className=' w-[400px] h-[600px] rounded-lg   '
             style={{
@@ -47,8 +47,6 @@ const AuthCarousel = () => {
           ></div>
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   );
 };
