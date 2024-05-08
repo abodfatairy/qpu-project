@@ -54,7 +54,7 @@ export function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-8 w-full bg-white'
+        className='space-y-8 w-full p-5 bg-white'
       >
         <FormField
           control={form.control}

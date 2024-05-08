@@ -5,9 +5,9 @@ import React from "react";
 
 const SignIn = () => {
   return (
-    <div className=' bg-white/50 p-10 rounded-lg flex items-center justify-center flex-col relative '>
+    <div className=' bg-white/50 p-10 rounded-lg flex items-center justify-center flex-col relative w-screen max-w-[400px] '>
       <div className=' absolute top-1 right-3'>
-        <span className=' text-[10px]'>
+        <span className=' text-[12px]'>
           Not a member?{" "}
           <Link
             className=' text-blue-500'
@@ -17,7 +17,7 @@ const SignIn = () => {
           </Link>
         </span>
       </div>
-      <div className=' '>
+      <div className='w-screen max-w-[400px]  p-5'>
         {/* HELLO BANNAR */}
         <div className=' text-center my-3'>
           <h1 className=' font-semibold text-3xl my-2'>Hello Again!</h1>
@@ -28,7 +28,9 @@ const SignIn = () => {
         {/* FORM */}
         <SignInForm />
         <div className=' text-center flex items-center justify-center flex-col gap-5 '>
-          <span className='  mt-4 border-b border-gray-200 pb-3'>Or continue with</span>
+          <span className='  mt-4 border-b border-gray-200 pb-3'>
+            Or continue with
+          </span>
           <div className=' flex  gap-5 items-center justify-center '>
             <Link href={"/"}>
               <Image

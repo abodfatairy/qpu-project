@@ -10,15 +10,12 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  email: z.string().email().min(8, {
-    message: "email must be at least 2 characters.",
-  }),
+  email: z.string().email(),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
@@ -48,11 +45,11 @@ export function SignInForm() {
           control={form.control}
           name='email'
           render={({ field }) => (
-            <FormItem className=' flex-1'>
+            <FormItem className=' '>
     
               <FormControl>
                 <Input
-                  className=" flex-1"
+                  className=" "
                   placeholder='example@example.com'
                   {...field}
                 />
