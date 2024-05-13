@@ -1,11 +1,9 @@
-import React from "react";
-import SignUp from "./(auth)/sign-up/page";
-
+import Test from "@/components/shared/Test";
 
 const HomePage = () => {
   return (
-    <div>
-      <SignUp />
+    <div className=''>
+      <Test />
     </div>
   );
 };
