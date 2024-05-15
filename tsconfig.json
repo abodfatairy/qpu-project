@@ -21,6 +21,14 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "i18nConfig.js", "components/shared/TranslationProvider.js", "components/shared/LanguageChanger.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "i18nConfig.js",
+    "components/shared/TranslationProvider.js",
+    "components/shared/LanguageChanger.tsx"
+  ],
   "exclude": ["node_modules"]
 }

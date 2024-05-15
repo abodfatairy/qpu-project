@@ -10,8 +10,8 @@ const SideBar = ({ data }: any) => {
 
   const uniqueCategories = new Set();
   return (
-    <div className=''>
-      <div className=' md:h-screen w-screen md:w-40  border-b md:border-r border-gray-200  pb-2 md:pb-0  items-center gap-3'>
+    <div className=' md:min-w-40 mt-8'>
+      <div className=' md:h-screen  md:w-30   border-b md:border-r  bg-main-6  pb-2 md:pb-0  items-center gap-3 fixed '>
         <div className=''>
           {data?.map((item: Products) => {
             uniqueCategories.add(item.category);
@@ -32,9 +32,7 @@ const SideBar = ({ data }: any) => {
                     <CarouselItem className='basis-1/3'>
                     <Link
                       href={`/products/${category}`}
-                      className={`${
-                        isActive ? "text-red-600" : "text-blue-300"
-                      } capitalize w-fit`}
+                     
                     >
                         {category}
                     </Link>
@@ -50,14 +48,14 @@ const SideBar = ({ data }: any) => {
                 `/products/${category}` === pathname.replace("%20", " ");
               return (
                 <div
-                  className='  flex  items-center justify-center   mt-3'
+                  className='  flex  items-center justify-center   mt-3 border-b border-main-4 last:border-none'
                   key={index}
                 >
                   <Link
                     href={`/products/${category}`}
                     className={`${
-                      isActive ? "text-red-600" : "text-blue-300"
-                    } capitalize w-fit`}
+                      isActive ? " text-main-1" : ""
+                    } capitalize w-fit font-medium`}
                   >
                     {category}
                   </Link>

@@ -22,6 +22,9 @@ const formSchema = z.object({
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
+  number: z.number().min(10, {
+    message: "number must be at least 10 characters.",
+  }),
   email: z.string().email().min(8, {
     message: "email must be at least 2 characters.",
   }),
@@ -42,6 +45,7 @@ export function SignUpForm() {
       email: "",
       addrses: "",
       age: "",
+      number: 0,
     },
   });
   // ...
@@ -54,7 +58,7 @@ export function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-8 w-full p-5 bg-white'
+        className=' w-full p-5'
       >
         <FormField
           control={form.control}
@@ -77,7 +81,7 @@ export function SignUpForm() {
           name='username'
           render={({ field }) => (
             <FormItem className=' flex-1'>
-              <FormLabel>User Name</FormLabel>
+              <FormLabel>User name</FormLabel>
               <FormControl>
                 <Input
                   placeholder='example:Ahmad'
@@ -98,6 +102,22 @@ export function SignUpForm() {
                 <Input
                   type='password'
                   placeholder='*********'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='number'
+          render={({ field }) => (
+            <FormItem className=' '>
+              <FormLabel>Phone Number</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder='0912345678'
                   {...field}
                 />
               </FormControl>
@@ -138,7 +158,7 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Sign up</Button>
+        <Button type='submit' className=" mt-2">Sign up</Button>
       </form>
     </Form>
   );

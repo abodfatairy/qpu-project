@@ -1,18 +1,26 @@
     [x] create project
     [x] create sign-up
     [x] create sign-in
-    [] create homePage {
-    [x]header{
+    [] create homePage
+      {
+    [x]header
+    {
+    [] create bannar
     [x]descktop header
     [x]mobile header
     [x]search
     [x]shapermint
     }
     [x]footer
-    []
-    []
-                      }
+     }
 
-    [] create detailsPage
+    [x] create detailsPage
     [x] categoryPages
+    [x] adding main colors
+    [x]edit dynamic mobile header
+    [x] profile side bar
+    [] create profile page
+    [] create my orders page
+    [] create setting page
+    [] create create product page
     []

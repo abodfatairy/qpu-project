@@ -12,6 +12,11 @@ import React from "react";
     label: "Products",
     link: "/products",
   },
+  {
+    label: "Profile",
+    link: "/profile",
+   },
+  
 ];
 const Categorys = () => {
   const pathname = usePathname();
@@ -25,7 +30,7 @@ const Categorys = () => {
           >
           <Link
           href={link.link}
-          className={`${isActive ? "text-red-600" : "text-white"} text-xl font-serif`}
+          className={`${isActive ? " text-blue-900" : " text-main-4"} text-xl font-serif`}
           >
             {link.label}
           </Link>

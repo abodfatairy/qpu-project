@@ -4,12 +4,12 @@ import { getData } from "@/data";
 import { Products } from "@/types";
 
 const ProductsPage = async () => {
-  const data = (await getData()) as Products[]
+  const data = (await getData()) as Products[];
 
   return (
-    <div className=' flex w-screen h-screen  flex-col md:flex-row gap-3  bg-gray-300'>
+    <div className=' flex    flex-col md:flex-row     pb-3'>
       <SideBar data={data} />
-      <div className=' overflow-y-scroll md:flex-1 grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mx-auto '>
+      <div className=' md:flex-1 grid  ml md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mx-auto '>
         {data?.map((item: Products) => {
           return (
             <div

@@ -1,9 +1,15 @@
-import React from "react";
+import Image from "next/image";
 
-const layout = ({children}:{children:React.ReactNode}) => {
-  return <div className=" w-screen h-screen flex items-center justify-center">
-    {children}
-  </div>;
-};
-
-export default layout;
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+      <div>
+        <main className=' h-[calc(100vh)]  w-screen flex items-center justify-center overflow-hidden  relative  '>
+          {children}
+        </main>
+      </div>
+  );
+}

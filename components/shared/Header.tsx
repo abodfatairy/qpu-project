@@ -5,11 +5,11 @@ import { Input } from "../ui/input";
 import MobileHeader from "./MobileHeader";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({ profile }: { profile?: boolean }) => {
   return (
     <>
-      <div className='   w-screen   bg-blue-950  hidden md:flex z-40  '>
-        <div className=' container md:mx-auto sm:flex  justify-between items-center  p-2'>
+      <div className='  fixed top-0  w-screen bg-main-1  hidden md:flex z-40  '>
+        <div className=' container md:mx-auto md:flex  justify-between items-center '>
           <Link
             href={"/"}
             className=' text-white'
@@ -22,22 +22,40 @@ const Header = () => {
           <div className=' flex items-center justify-center gap-2  '>
             {/* search */}
             <div className='flex items-center justify-center'>
-              <Input className=' outline-none border-none rounded-r-none focus-visible:ring-0 ' />
-              <CiSearch className=' bg-red-200 rounded-l-none  mr text-2xl px-1 rounded-md h-10' />
+              <button className=' cursor-pointer'>
+                <Input
+                  className=' outline-none border-none rounded-r-none  focus-visible:ring-0 cursor-pointer '
+                  placeholder='Search . . .'
+                />
+              </button>
+              <CiSearch className=' bg-main-6 rounded-l-none border-l border-main-1  text-2xl px-1 rounded-md h-10' />
             </div>
 
             {/* shopping cart */}
-            <div className='relative'>
+            <Link
+              href={"/cart"}
+              className='relative mr-5'
+            >
               <LiaShoppingBagSolid className=' text-white  text-5xl' />
-              <span className=' bg-red-600 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0'>
+              <span className=' bg-red-400 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0'>
                 50
               </span>
+            </Link>
+            {/* profile */}
+            <div className=''>
+              <Link
+                href={"/sign-in"}
+                className=' text-white'
+              >
+                {" "}
+                Signin
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className=' flex md:hidden'>
-        <MobileHeader />
+        <MobileHeader profile={profile} />
       </div>
     </>
   );

@@ -1,12 +1,12 @@
 import type { Config } from "tailwindcss";
-
-const config = {
+import { withUt } from "uploadthing/tw";
+module.exports = withUt({
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -19,8 +19,13 @@ const config = {
     },
     extend: {
       colors: {
-        qpu: {
-          "1": "#000",
+        main: {
+          "1": "#008DDA",
+          "2": "#41C9E2",
+          "3": "#ACE2E1",
+          "4": "#F7EEDD",
+          "5": "rgb(247 238 221 / 0.3)",
+          "6": "#ffffff",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -78,6 +83,4 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
-
-export default config;
+});

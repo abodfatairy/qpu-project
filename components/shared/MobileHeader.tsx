@@ -1,7 +1,6 @@
 "use client";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -14,11 +13,12 @@ import { Input } from "../ui/input";
 import Categorys, { links } from "./Categorys";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ProfileLinks } from "./ProfileSideBar";
 
-const MobileHeader = () => {
+const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
   return (
-    <div className=' w-screen bg-blue-950  flex items-center justify-between p-2'>
+    <div className=' fixed top-0 w-screen bg-blue-950  flex items-center justify-between p-2'>
       <div className=''>
         <Sheet>
           <SheetTrigger>
@@ -58,6 +58,30 @@ const MobileHeader = () => {
                   );
                 })}
               </div>
+
+              {profile && (
+                <div className=' flex flex-col gap-3 items-center overflow-hidden '>
+                  {ProfileLinks.slice(1, 9).map((link, index) => {
+                    const isActive = link.href === pathname;
+                    return (
+                      <SheetTrigger
+                        className=''
+                        key={index}
+                        asChild
+                      >
+                        <Link
+                          href={link.href}
+                          className={`${
+                            isActive ? "text-red-600" : "text-black"
+                          } border-b border-gray-100  w-screen `}
+                        >
+                          {link.name}
+                        </Link>
+                      </SheetTrigger>
+                    );
+                  })}
+                </div>
+              )}
             </SheetHeader>
           </SheetContent>
         </Sheet>
