@@ -27,6 +27,13 @@ module.exports = withUt({
           "5": "rgb(247 238 221 / 0.3)",
           "6": "#ffffff",
         },
+        dark: {
+          "1": "#222831",
+          "2": "#31363F",
+          "3": "#76ABAE",
+          "4": "#EEEEEE",
+    
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

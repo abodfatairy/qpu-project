@@ -1,23 +1,10 @@
 "use client";
 
+import { links } from "@/constent";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
- export const links = [
-  {
-    label: "Home",
-    link: "/",
-  },
-  {
-    label: "Products",
-    link: "/products",
-  },
-  {
-    label: "Profile",
-    link: "/profile",
-   },
-  
-];
+ 
 const Categorys = () => {
   const pathname = usePathname();
   return (

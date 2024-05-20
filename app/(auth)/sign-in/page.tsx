@@ -5,7 +5,7 @@ import React from "react";
 
 const SignIn = () => {
   return (
-    <div className=' bg-white/50 p-10 rounded-lg flex items-center justify-center flex-col relative w-screen max-w-[400px] shadow-2xl    border border-slate-200 '>
+    <div className=' bg-white/50 dark:bg-dark-4 p-10 rounded-lg flex items-center justify-center flex-col relative w-screen max-w-[400px] shadow-2xl    border border-slate-200 '>
       <div className=' absolute top-1 right-3'>
         <span className=' text-[12px]'>
           Not a member?{" "}
@@ -21,7 +21,7 @@ const SignIn = () => {
         {/* HELLO BANNAR */}
         <div className=' text-center my-3'>
           <h1 className=' font-semibold text-3xl my-2'>Hello Again!</h1>
-          <p className=' text-gray-400 text-sm'>
+          <p className=' text-gray-400 text-sm dark:text-red-800'>
             Wellcome back you&apos;ve been missed!
           </p>
         </div>

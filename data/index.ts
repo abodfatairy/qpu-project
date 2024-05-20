@@ -14,7 +14,7 @@ export const getData = async () => {
     return await res.json(); // Cast the response to Product[]
   } catch (error) {
     return error; // Return the error object for handling
-  }//api/users/
+  } //api/users/
 };
 export const getDataById = async (id: string) => {
   try {
@@ -30,3 +30,4 @@ export const getDataById = async (id: string) => {
     return error; // Return the error object for handling
   }
 };
+

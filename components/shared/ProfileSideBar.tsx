@@ -1,40 +1,23 @@
 "use client";
+import { ProfileLinks } from "@/constent";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { CgProfile } from "react-icons/cg";
-import { CiSettings } from "react-icons/ci";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+
 import { PiSignInLight } from "react-icons/pi";
-export const ProfileLinks = [
-  {
-    name: "Profile",
-    icon: <CgProfile />,
-    href: "/profile",
-  },
-  {
-    name: "Orders",
-    icon: <MdOutlineProductionQuantityLimits />,
-    href: "/profile/orders",
-  },
-  {
-    name: "Setting",
-    icon: <CiSettings />,
-    href: "/profile/settings",
-  },
-];
+
 const ProfileSideBar = () => {
   const pathname = usePathname();
   return (
     <>
-      <div className=' w-36 '>
-        <div className=' p-2 border-r border-main-1  flex  flex-col   w-36 max-w-36 fixed   '>
-          <div className='h-[calc(100vh-110px)] '>
+      <div className=' w-36  '>
+        <div className=' p-2 border-r border-main-1  flex  flex-col   w-36 max-w-36 fixed  dark:bg-dark-2   '>
+          <div className='h-[calc(100vh-110px)]  '>
             {ProfileLinks.map((item) => {
               const isActive = item.href === pathname;
               return (
                 <div
-                  className=' flex  items-center  p-2 border-b border-main-4 last:border-none '
+                  className=' flex  items-center  p-2 border-b border-main-4 last:border-none dark:text-dark-4'
                   key={item.name}
                 >
                   <p className={` ${isActive ? " text-main-1" : ""} mr-2`}>

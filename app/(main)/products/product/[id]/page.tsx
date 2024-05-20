@@ -17,7 +17,7 @@ const ProductDetails = async ({
     <div className='  flex  bg-main-6  justify-center mt-2 '>
       {/* container */}
 
-      <div className='  flex flex-col border  rounded max-w-[1000px] '>
+      <div className='  flex flex-col border  rounded max-w-[800px] '>
         <div className=' flex flex-col md:flex-row'>
           {/* product images */}
           <div className=' md:flex-1'>

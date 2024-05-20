@@ -58,7 +58,7 @@ export function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className=' w-full p-5'
+        className=' w-full p-3 dark:text-dark-4'
       >
         <FormField
           control={form.control}

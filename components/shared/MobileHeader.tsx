@@ -10,25 +10,28 @@ import {
 import { CiMenuBurger, CiSearch } from "react-icons/ci";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { Input } from "../ui/input";
-import Categorys, { links } from "./Categorys";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ProfileLinks } from "./ProfileSideBar";
+
+import { ProfileLinks, links } from "@/constent";
 
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
   return (
-    <div className=' fixed top-0 w-screen bg-blue-950  flex items-center justify-between p-2'>
-      <div className=''>
+    <div className=' fixed top-0 w-screen bg-blue-950  flex items-center justify-between p-2 z-50 '>
+      <div className='dark:bg-dark-2'>
         <Sheet>
           <SheetTrigger>
             <CiMenuBurger />
           </SheetTrigger>
-          <SheetContent side={"left"}>
+          <SheetContent
+            side={"left"}
+            className=' dark:bg-dark-2'
+          >
             <SheetHeader>
               <SheetTitle>Logo</SheetTitle>
               <SheetDescription>
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-center dark:bg-dark-2'>
                   <Input
                     className=' bg-gray-200 outline-none border-none rounded-r-none focus-visible:ring-0 placeholder:text-lg '
                     placeholder='search...'
@@ -37,7 +40,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                 </div>
               </SheetDescription>
 
-              <div className=' flex flex-col gap-3 items-center overflow-hidden '>
+              <div className=' flex flex-col gap-3 items-center overflow-hidden  '>
                 {links.map((link, index) => {
                   const isActive = link.link === pathname;
                   return (

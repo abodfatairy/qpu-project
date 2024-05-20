@@ -7,13 +7,13 @@ const ProductsPage = async () => {
   const data = (await getData()) as Products[];
 
   return (
-    <div className=' flex    flex-col md:flex-row     pb-3'>
+    <div className=' flex    flex-col md:flex-row  pb-3 '>
       <SideBar data={data} />
-      <div className=' md:flex-1 grid  ml md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mx-auto '>
+      <div className=' md:flex-1 grid mt-9  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 mx-auto'>
         {data?.map((item: Products) => {
           return (
             <div
-              className=''
+              className=' mx-auto'
               key={item._id}
             >
               <Card item={item} />

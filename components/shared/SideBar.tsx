@@ -10,8 +10,8 @@ const SideBar = ({ data }: any) => {
 
   const uniqueCategories = new Set();
   return (
-    <div className=' md:min-w-40 mt-8'>
-      <div className=' md:h-screen  md:w-30   border-b md:border-r  bg-main-6  pb-2 md:pb-0  items-center gap-3 fixed '>
+    <div className=' md:min-w-40 mt-[45px]  dark:bg-dark-2 z-20 '>
+      <div className=' md:h-screen  md:w-30   border-b md:border-r  bg-main-6 dark:bg-dark-2  pb-2 md:pb-0  items-center gap-3 fixed '>
         <div className=''>
           {data?.map((item: Products) => {
             uniqueCategories.add(item.category);
@@ -30,13 +30,8 @@ const SideBar = ({ data }: any) => {
                     key={index}
                   >
                     <CarouselItem className='basis-1/3'>
-                    <Link
-                      href={`/products/${category}`}
-                     
-                    >
-                        {category}
-                    </Link>
-                      </CarouselItem>
+                      <Link href={`/products/${category}`}>{category}</Link>
+                    </CarouselItem>
                   </CarouselContent>
                 );
               })}
@@ -54,8 +49,8 @@ const SideBar = ({ data }: any) => {
                   <Link
                     href={`/products/${category}`}
                     className={`${
-                      isActive ? " text-main-1" : ""
-                    } capitalize w-fit font-medium`}
+                      isActive ? " text-main-1  dark:text-main-1" : ""
+                    } capitalize w-fit font-medium dark:text-dark-4 pb-3`}
                   >
                     {category}
                   </Link>

@@ -4,11 +4,12 @@ import { CiSearch } from "react-icons/ci";
 import { Input } from "../ui/input";
 import MobileHeader from "./MobileHeader";
 import Link from "next/link";
+import DarkMode from "./DarkMode";
 
 const Header = ({ profile }: { profile?: boolean }) => {
   return (
     <>
-      <div className='  fixed top-0  w-screen bg-main-1  hidden md:flex z-40  '>
+      <div className='  fixed top-0  w-screen bg-main-1   hidden md:flex z-40  '>
         <div className=' container md:mx-auto md:flex  justify-between items-center '>
           <Link
             href={"/"}
@@ -24,7 +25,7 @@ const Header = ({ profile }: { profile?: boolean }) => {
             <div className='flex items-center justify-center'>
               <button className=' cursor-pointer'>
                 <Input
-                  className=' outline-none border-none rounded-r-none  focus-visible:ring-0 cursor-pointer '
+                  className=' outline-none border-none rounded-r-none  focus-visible:ring-0 cursor-pointer  '
                   placeholder='Search . . .'
                 />
               </button>
@@ -50,6 +51,9 @@ const Header = ({ profile }: { profile?: boolean }) => {
                 {" "}
                 Signin
               </Link>
+            </div>
+            <div className=''>
+              <DarkMode />
             </div>
           </div>
         </div>
