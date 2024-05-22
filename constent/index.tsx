@@ -42,11 +42,12 @@ export const CategorysNames = [
     image: "/assets/images/phoneCase.jpg",
   },
   {
-    name: "watch",
-    image: "/assets/images/watch.jpg",
-  },
-  {
     name: "accessories",
     image: "/assets/images/accessories.jpg",
+  },
+  
+  {
+    name: "watch",
+    image: "/assets/images/watch.jpg",
   },
 ];

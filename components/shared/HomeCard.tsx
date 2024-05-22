@@ -11,18 +11,27 @@ export type HomeCardType = {
 const HomeCard = ({ item }: HomeCardType) => {
   const router = useRouter();
   return (
+    // <div
+    //   className=' relative cursor-pointer rounded-md overflow-hidden shadow-lg max-w-[700px] '
+    //   onClick={() => router.push(`/products/${item.name}`)}
+    // >
     <div
-      className=' relative cursor-pointer rounded-md overflow-hidden shadow-lg'
       onClick={() => router.push(`/products/${item.name}`)}
+      className=' rounded-lg overflow-hidden'
     >
       <Image
         src={item.image}
         alt=''
-        width={400}
-        height={400}
-        className=''
+        fill
+        priority
+        sizes='(max-width: 768px) 100vw, 33vw'
+        className=' cursor-pointer  rounded-lg'
+        objectFit='cover'
+        objectPosition='center'
       />
-      <p className=' text-red-200 absolute top-0 left-3 z-10 font-semibold capitalize text-2xl'>{item.name}</p>
+      <p className=' text-white  absolute top-0 left-3 z-10 font-semibold capitalize md:text-2xl'>
+        {item.name}
+      </p>
     </div>
   );
 };

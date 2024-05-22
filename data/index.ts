@@ -1,6 +1,6 @@
 "use server";
 
-import { Products } from "@/types";
+// import { Products } from "@/types";/''
 
 export const getData = async () => {
   try {
