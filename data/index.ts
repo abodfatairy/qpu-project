@@ -4,7 +4,9 @@
 
 export const getData = async () => {
   try {
-    const res = await fetch(`https://jsonserver.reactbd.com/amazonpro`);
+    const res = await fetch(`https://jsonserver.reactbd.com/amazonpro`, {
+      cache: "no-cache",
+    });
 
     // Check for successful response (status code 200)
     if (!res.ok) {
@@ -31,3 +33,18 @@ export const getDataById = async (id: string) => {
   }
 };
 
+export const getDataByCategory = async (category: string) => {
+  try {
+    const uniqueCategories = new Set();
+    const res = await fetch(`https://jsonserver.reactbd.com/${category}`);
+
+    if (!res.ok) {
+      throw new Error(`API request failed with status`);
+    }
+  
+
+    return await res.json(); // Cast the response to Product[]
+  } catch (error) {
+    return error; // Return the error object for handling
+  }
+};

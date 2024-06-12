@@ -14,11 +14,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { ProfileLinks, links } from "@/constent";
+import Cart from "./Cart";
 
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
   return (
-    <div className=' fixed top-0 w-screen bg-blue-950  flex items-center justify-between p-2 z-50 '>
+    <div className=' fixed top-0 w-screen  bg-main-2  flex items-center justify-between p-2 z-50 '>
       <div className='dark:bg-dark-2'>
         <Sheet>
           <SheetTrigger>
@@ -97,12 +98,13 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
       </Link>
       <div className=''>
         {/* shopping cart */}
-        <div className='relative'>
+        {/* <div className='relative'>
           <LiaShoppingBagSolid className=' text-white  text-5xl' />
           <span className=' bg-red-600 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0'>
             50
           </span>
-        </div>
+        </div> */}
+        <Cart />
       </div>
     </div>
   );

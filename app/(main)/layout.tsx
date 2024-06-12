@@ -6,12 +6,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='  flex  flex-col justify-between '>
+    <div className='  flex flex-col '>
       <Header />
-      <div className='  flex flex-col  mt-4  '>
-        {children}
+      <main className=' mt-4 flex-1 '>{children}</main>
+      <div className=''>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

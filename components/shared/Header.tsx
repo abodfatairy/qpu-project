@@ -1,15 +1,14 @@
 import Categorys from "./Categorys";
-import { LiaShoppingBagSolid } from "react-icons/lia";
-import { CiSearch } from "react-icons/ci";
-import { Input } from "../ui/input";
 import MobileHeader from "./MobileHeader";
 import Link from "next/link";
 import DarkMode from "./DarkMode";
+import Cart from "./Cart";
+import Search from "./Search";
 
 const Header = ({ profile }: { profile?: boolean }) => {
   return (
     <>
-      <div className='  fixed top-0  w-screen bg-main-1   hidden md:flex z-40  '>
+      <div className='  fixed top-0  w-screen bg-main-2   hidden md:flex z-40 p-2  '>
         <div className=' container md:mx-auto md:flex  justify-between items-center '>
           <Link
             href={"/"}
@@ -22,26 +21,19 @@ const Header = ({ profile }: { profile?: boolean }) => {
           </div>
           <div className=' flex items-center justify-center gap-2  '>
             {/* search */}
-            <div className='flex items-center justify-center'>
-              <button className=' cursor-pointer'>
-                <Input
-                  className=' outline-none border-none rounded-r-none  focus-visible:ring-0 cursor-pointer  '
-                  placeholder='Search . . .'
-                />
-              </button>
-              <CiSearch className=' bg-main-6 rounded-l-none border-l border-main-1  text-2xl px-1 rounded-md h-10' />
-            </div>
+            <Search />
 
             {/* shopping cart */}
-            <Link
+            <Cart />
+            {/* <Link
               href={"/cart"}
               className='relative mr-5'
             >
               <LiaShoppingBagSolid className=' text-white  text-5xl' />
-              <span className=' bg-red-400 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0'>
+              <span className=' bg-red-500 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0 text-white'>
                 50
               </span>
-            </Link>
+            </Link> */}
             {/* profile */}
             <div className=''>
               <Link

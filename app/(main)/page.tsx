@@ -2,10 +2,17 @@ import Banner from "@/components/shared/Banner";
 import HomeCard from "@/components/shared/HomeCard";
 import { CategorysNames } from "@/constent";
 
-export default function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams: { id: string | undefined };
+}) {
+
+
   return (
-    <main className='flex   flex-col mt-8     '>
+    <main className='flex   flex-col mt-8    '>
       <Banner />
+
       <div className=' container grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3     mt-3  xl:ml-auto  gap-3'>
         {CategorysNames.map((item) => (
           <div

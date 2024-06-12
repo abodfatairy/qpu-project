@@ -14,28 +14,39 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+// import { UploadButton } from "@/lib/uploadthing";
+// import { UploadDropzone } from "@uploadthing/react";
+import { FileUploader } from "./FileUploader";
+import { useState } from "react";
 
 const formSchema = z.object({
   fullname: z.string().min(3, {
     message: "fullname must be at least 3 characters.",
   }),
+  profilePhoto: z.string(),
+
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
-  number: z.number().min(10, {
-    message: "number must be at least 10 characters.",
-  }),
+  number: z.string(),
   email: z.string().email().min(8, {
-    message: "email must be at least 2 characters.",
+    // message: "email must be at least 2 characters.",
   }),
-  addrses: z.string().min(8, {
-    message: "email must be at least 2 characters.",
+  mainAddrse: z.string().min(8, {
+    // message: "email must be at least 2 characters."
   }),
-  age: z.string().min(8, {
-    message: "enter your data",
+  mainAddrseDesc: z.string().min(8, {
+    // message: "email must be at least 2 characters.",
+  }),
+  secAddrse: z.string().min(8, {
+    // message: "email must be at least 2 characters.",
+  }),
+  secAddrseDesc: z.string().min(8, {
+    // message: "email must be at least 2 characters.",
   }),
 });
-export function SignUpForm() {
+export function SettingForm() {
+  const [files, setFiles] = useState<File[]>([]);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,22 +54,23 @@ export function SignUpForm() {
       fullname: "",
       password: "",
       email: "",
-      addrses: "",
-      age: "",
-      number: 0,
+      mainAddrse: "",
+      mainAddrseDesc: "",
+      secAddrse: "",
+      secAddrseDesc: "",
+      profilePhoto: "",
+      number: "",
     },
   });
   // ...
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+
   }
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='  dark:text-dark-4 space-y-3 text-slate-400 flex-1'
+        className='  dark:text-dark-4 space-y-3 text-slate-400  mb-6'
       >
         <FormField
           control={form.control}
@@ -70,6 +82,23 @@ export function SignUpForm() {
                 <Input
                   placeholder='example@example.com'
                   {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='profilePhoto'
+          render={({ field }) => (
+            <FormItem className=' w-fit '>
+              <FormLabel>Profile Image</FormLabel>
+              <FormControl>
+                <FileUploader
+                  onFieldChange={field.onChange}
+                  imageUrl={field.value}
+                  setFiles={setFiles}
                 />
               </FormControl>
               <FormMessage />
@@ -127,10 +156,10 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name='addrses'
+          name='mainAddrse'
           render={({ field }) => (
             <FormItem className=' '>
-              <FormLabel>Addrses</FormLabel>
+              <FormLabel>mainAddrse</FormLabel>
               <FormControl>
                 <Input
                   placeholder='example:damas'
@@ -143,14 +172,13 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name='age'
+          name='mainAddrseDesc'
           render={({ field }) => (
             <FormItem className=' '>
-              <FormLabel>Age</FormLabel>
+              <FormLabel>main Addrse desc</FormLabel>
               <FormControl>
                 <Input
-                  type='date'
-                  placeholder='City'
+                  placeholder='example:damas'
                   {...field}
                 />
               </FormControl>
@@ -158,11 +186,44 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name='secAddrse'
+          render={({ field }) => (
+            <FormItem className=' '>
+              <FormLabel>Second Addrse</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder='example:damas'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='secAddrseDesc'
+          render={({ field }) => (
+            <FormItem className=' '>
+              <FormLabel>Second Addrse Desc</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder='example:damas'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button
           type='submit'
           className=' mt-2'
         >
-          Sign up
+          Edit
         </Button>
       </form>
     </Form>

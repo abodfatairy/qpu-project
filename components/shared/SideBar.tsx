@@ -7,11 +7,13 @@ import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const SideBar = ({ data }: any) => {
   const pathname = usePathname();
+  const isproActive = "/products" === pathname;
+
 
   const uniqueCategories = new Set();
   return (
-    <div className=' md:min-w-40 mt-[45px]  dark:bg-dark-2 z-20 '>
-      <div className=' md:h-screen  md:w-30   border-b md:border-r  bg-main-6 dark:bg-dark-2  pb-2 md:pb-0  items-center gap-3 fixed '>
+    <div className=' md:w-[250px] mt-[45px] md:mt-12  dark:bg-dark-2 z-20 mr-6   '>
+      <div className=' md:h-screen md:pl-5  md:w-30      bg-main-2 dark:bg-dark-2  pb-2 md:pb-0  items-center gap-3 fixed '>
         <div className=''>
           {data?.map((item: Products) => {
             uniqueCategories.add(item.category);
@@ -19,38 +21,62 @@ const SideBar = ({ data }: any) => {
             return null; // Prevent rendering individual category divs here
           })}
           {/* return category filter names */}
+          {/* mobile  sideBar */}
           <Carousel className=' flex  md:hidden'>
-            <CarouselContent className=' w-screen'>
+            <CarouselContent className=' w-screen '>
               {Array.from(uniqueCategories).map((category: any, index) => {
                 const isActive =
-                  `/products/${category}` === pathname.replace("%20", " ");
+                  `/products/${category}` === pathname.replace(" ", "");
                 return (
                   <CarouselContent
-                    className=' w-screen p-2 ml-4'
+                    className=' w-screen py-2 ml-4'
                     key={index}
                   >
-                    <CarouselItem className='basis-1/3'>
-                      <Link href={`/products/${category}`}>{category}</Link>
+                    <CarouselItem className=' w-fit'>
+                      <Link
+                        className='w-fit'
+                        href={`/products/${category}`}
+                      >
+                        {category}
+                      </Link>
                     </CarouselItem>
                   </CarouselContent>
                 );
               })}
             </CarouselContent>
           </Carousel>
-          <div className=' hidden md:flex  flex-col  ml-2   md:w-40 '>
+
+          {/* desktop sideBar */}
+          <div className=' hidden md:flex   flex-col  ml-2   md: w-[250px]  '>
+            <div className=' py-10 text-white font-bold tracking-widest '>
+              Products
+            </div>
+            <Link
+              href={`/products`}
+              className={`${
+                isproActive
+                  ? " relative bg-main-6 rounded-br-lg rounded-l-[20px] before:absolute before:bg-transparent before:top-[47px] before:right-[0px] before:h-[35px] before:w-[35px] before:rounded-tr-[18px] before:shadow-5xl ......  after:absolute   after:bg-transparent after:bottom-[47px] after:right-0 after:h-[35px] after:w-[35px] after:rounded-tl-[18px] after:rotate-180   after:shadow-5xl text-main-1  "
+                  : " text-white"
+              }  flex   p-3 pl-8  items-center capitalize w-[250]`}
+            >
+              ALL
+            </Link>
             {Array.from(uniqueCategories).map((category: any, index) => {
               const isActive =
-                `/products/${category}` === pathname.replace("%20", " ");
+                `/products/${category.replace(" ", "")}` ===
+                pathname.replace(" ", "");
               return (
                 <div
-                  className='  flex  items-center justify-center   mt-3 border-b border-main-4 last:border-none'
+                  className='  flex  items-center justify-center     '
                   key={index}
                 >
                   <Link
-                    href={`/products/${category}`}
+                    href={`/products/${category.replace(" ", "")}`}
                     className={`${
-                      isActive ? " text-main-1  dark:text-main-1" : ""
-                    } capitalize w-fit font-medium dark:text-dark-4 pb-3`}
+                      isActive
+                        ? " relative bg-main-6 rounded-br-lg rounded-l-[20px] before:absolute before:bg-transparent before:top-[47px] before:right-[0px] before:h-[35px] before:w-[35px] before:rounded-tr-[18px] before:shadow-5xl ......  after:absolute   after:bg-transparent after:bottom-[47px] after:right-0 after:h-[35px] after:w-[35px] after:rounded-tl-[18px] after:rotate-180   after:shadow-5xl text-main-1  "
+                        : " text-white"
+                    }  flex w-screen  p-3 pl-8  items-center capitalize`}
                   >
                     {category}
                   </Link>

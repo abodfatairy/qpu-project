@@ -14,7 +14,7 @@ const ProductDetails = async ({
   const product = (await getDataById(id)) as Products;
 
   return (
-    <div className='  flex  bg-main-6  justify-center mt-2 '>
+    <div className='  flex   bg-main-6  justify-center mt-[50px] '>
       {/* container */}
 
       <div className='  flex flex-col border  rounded max-w-[800px] '>

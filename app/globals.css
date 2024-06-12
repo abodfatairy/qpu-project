@@ -76,3 +76,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* .beforeAfter::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 47px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -20px 0 0 #ffffff;
+} */

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import Providers from "@/components/shared/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,8 +23,10 @@ export default function RootLayout({
           defaultTheme='system'
           enableSystem
           disableTransitionOnChange
-        >
-          <main className=' flex-1 '>{children}</main>
+          >
+          <Providers>
+            {children}
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

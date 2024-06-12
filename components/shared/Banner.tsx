@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 const Banner = () => {
   return (
-    <div className=' h-[60vh] w-screen'>
+    <div className=' md:h-[60vh] w-screen'>
       <Carousel
         plugins={[
           Autoplay({
@@ -19,7 +19,7 @@ const Banner = () => {
         <CarouselContent>
           <CarouselItem>
             <div
-              className='  w-screen h-[80vh]'
+              className=' h-[30vh]  w-screen md:h-[80vh]'
               style={{
                 backgroundImage: `url(/assets/images/1.jpg)`,
                 backgroundSize: "cover",
@@ -30,7 +30,7 @@ const Banner = () => {
           </CarouselItem>
           <CarouselItem>
             <div
-              className='  w-screen  h-[80vh]'
+              className='  h-[30vh]  w-screen md:h-[80vh]'
               style={{
                 backgroundImage: `url(/assets/images/2.png)`,
                 backgroundSize: "cover",
@@ -41,7 +41,7 @@ const Banner = () => {
           </CarouselItem>
           <CarouselItem>
             <div
-              className='  w-screen  h-[80vh]'
+              className=' h-[30vh]  w-screen md:h-[80vh]'
               style={{
                 backgroundImage: `url(/assets/images/3.jpg)`,
                 backgroundSize: "cover",

@@ -4,26 +4,48 @@ import Link from "next/link";
 import React from "react";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
-import { Button } from "../ui/button";
-import { IoBagAddOutline } from "react-icons/io5";
-const Card = ({ item }: { item: Products }) => {
+import { MotionDiv } from "./MotionDiv";
+import BuyButton from "./BuyButton";
+import AddToCartButton from "./AddToCartButton";
+const variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: { opacity: 1 },
+};
+const Card = ({ item, index }: { item: Products; index: number }) => {
   return (
-    <div className=' flex flex-col  max-w-[250px] shadow-sm rounded-xl overflow-hidden  border border-gray-200 bg-main-5 dark:bg-dark-2 h-[420px] relative'>
+    <MotionDiv
+      variants={variants}
+      initial='hidden'
+      animate='visible'
+      transition={{
+        delay: index * 0.05,
+        ease: "easeInOut",
+        duration: 0.5,
+      }}
+      viewport={{ amount: 0 }}
+      className=' flex flex-col    w-96  max-w-[450px] shadow-sm rounded-xl overflow-hidden bg-yellow-50/10 dark:bg-dark-2 relative border-slate-200 border'
+    >
       <Link
         href={`/products/product/${item?._id}`}
-        className=' max-h-[300px] border border-slate-500 overflow-y-hidden'
+        className=' w-96 h-72 max-h-[300px] select-none   '
       >
-        <Image
-          src={item?.image}
-          width={250}
-          height={250}
-          alt=''
-      
-        />
+        <div className='absolute w-96 h-72  '>
+          <Image
+            src={item?.image}
+            // src={"/assets/images/1.jpg"}
+            // width={250}
+            // height={250}
+            alt=''
+            fill
+            className=' object-cover object-center'
+          />
+        </div>
       </Link>
-      <div className=' flex-col flex gap-1 p-2 '>
-        <div className=' flex justify-between items-center '>
-          <h1 className=' text-xl font-semibold text-blue-800 dark:text-dark-4 tracking-[-1px]' >
+      <div className=' flex-col flex gap-1 p-2  justify-between'>
+        <div className=' flex  flex-col  p-2    '>
+          <h1 className='  font-semibold text-blue-800 dark:text-dark-4 tracking-[-1px] text-2xl mb-4 '>
             {item?.title}
           </h1>
           {/* stars rate */}
@@ -35,19 +57,24 @@ const Card = ({ item }: { item: Products }) => {
             <CiStar className=' text-yellow-400' />
           </div>
         </div>
-        <div className=' flex    '>
-          <div className='absolute bottom-0'>
+        <div className=' flex  justify-between   items-center p-2  '>
+          <div className=' p-2 '>
             <p className=' line-through text-gray-400'>
               ${item?.previousPrice}
             </p>
-            <p className=' font-semibold dark:text-dark-4'> ${item?.price}</p>
+            <p className='  font-black text-main-1 dark:text-dark-4 text-xl'>
+              {" "}
+              <span className=' text-base'>$</span>
+              {item?.price}
+            </p>
           </div>
-          <Button className=' bg-main-1 absolute bottom-1 right-1 '>
-            <IoBagAddOutline className=' text-white text-2xl' />
-          </Button>
+          <div className=' flex items-center justify-center gap-2'>
+            <AddToCartButton item={item} />
+            <BuyButton item={item} />
+          </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
 };
 

@@ -1,4 +1,4 @@
-export type Products = {
+export interface Products {
   _id: number;
   title: string;
   price: number;
@@ -9,4 +9,8 @@ export type Products = {
   isNew: boolean;
   brand: string;
   quantity: number;
-};
+}
+export interface CartItem {
+  product: Products;
+  qty: number;
+}

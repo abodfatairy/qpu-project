@@ -18,6 +18,9 @@ module.exports = withUt({
       },
     },
     extend: {
+      boxShadow: {
+        "5xl": "0 -20px 0 0 #ffffff",
+      },
       colors: {
         main: {
           "1": "#008DDA",
@@ -32,7 +35,6 @@ module.exports = withUt({
           "2": "#31363F",
           "3": "#76ABAE",
           "4": "#EEEEEE",
-    
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

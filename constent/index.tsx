@@ -8,18 +8,18 @@ export const links = [
   },
   {
     label: "Products",
-    link: "/products",
+    link:   `/products/`,
   },
   {
     label: "Profile",
-    link: "/profile",
+    link: `/profile/${0}`,
   },
 ];
 export const ProfileLinks = [
   {
     name: "Profile",
     icon: <CgProfile />,
-    href: "/profile",
+    href: `/profile/${0}`,
   },
   {
     name: "Orders",
@@ -45,9 +45,43 @@ export const CategorysNames = [
     name: "accessories",
     image: "/assets/images/accessories.jpg",
   },
-  
+
   {
     name: "watch",
     image: "/assets/images/watch.jpg",
+  },
+];
+
+export const testDataProfile = [
+  {
+    id: "0",
+    name: "fadi haj",
+    reviews: "3.8",
+    image: "/assets/images/1.jpg",
+    firstAddres: "ref damas",
+    firstAddresDesc: "alrz",
+    secondAddres: "ref damas",
+    secondAddresDesc: "dumar near the bz",
+    phoneNumber: "0999996547",
+    email: "fadi@gmail.com",
+    isBlocked: false,
+    isAdmin: false,
+    isOwner: false,
+  },
+
+  {
+    id: "1",
+    name: "abod fta ",
+    reviews: "8.3",
+    image: "",
+    firstAddres: "Damascus",
+    firstAddresDesc: "Medan Near The Masa Blaza Mall",
+    secondAddres: "Damascus",
+    secondAddresDesc: "Sahnaya The Town Center Mall",
+    phoneNumber: "0947749499",
+    email: "abod@gmail.com",
+    isBlocked: false,
+    isAdmin: false,
+    isOwner: false,
   },
 ];

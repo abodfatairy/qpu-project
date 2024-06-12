@@ -28,8 +28,8 @@ const SignIn = () => {
         {/* FORM */}
         <SignInForm />
         <div className=' text-center flex items-center justify-center flex-col gap-5 '>
-          <span className='  mt-4 border-b border-gray-200 pb-3'>
-            Or continue with
+          <span className=' font-serif  mt-4 border-b border-gray-200 pb-3 capitalize '>
+            or continue with 
           </span>
           <div className=' flex  gap-5 items-center justify-center '>
             <Link href={"/"}>
