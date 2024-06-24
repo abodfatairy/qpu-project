@@ -20,16 +20,16 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
   return (
     <div className=' fixed top-0 w-screen  bg-main-2  flex items-center justify-between p-2 z-50 '>
-      <div className='dark:bg-dark-2'>
+      <div className=' dark:bg-main-2'>
         <Sheet>
-          <SheetTrigger>
-            <CiMenuBurger />
+          <SheetTrigger className=' dark:bg-main-2 py-2 '>
+            <CiMenuBurger className=' dark:text-white' />
           </SheetTrigger>
           <SheetContent
             side={"left"}
-            className=' dark:bg-dark-2'
+            className='  dark:bg-main-2 '
           >
-            <SheetHeader>
+            <SheetHeader className=''>
               <SheetTitle>Logo</SheetTitle>
               <SheetDescription>
                 <div className='flex items-center justify-center dark:bg-dark-2'>
@@ -41,7 +41,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                 </div>
               </SheetDescription>
 
-              <div className=' flex flex-col gap-3 items-center overflow-hidden  '>
+              <div className=' flex flex-col gap-3 items-center overflow-hidden   '>
                 {links.map((link, index) => {
                   const isActive = link.link === pathname;
                   return (
@@ -53,8 +53,8 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                       <Link
                         href={link.link}
                         className={`${
-                          isActive ? "text-red-600" : "text-black"
-                        } border-b border-gray-100  w-screen `}
+                          isActive ? " font-semibold" : ""
+                        } border-b border-gray-100  w-screen dark:text-white `}
                       >
                         {link.label}
                       </Link>
@@ -76,8 +76,8 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                         <Link
                           href={link.href}
                           className={`${
-                            isActive ? "text-red-600" : "text-black"
-                          } border-b border-gray-100  w-screen `}
+                            isActive ? " font-bold" : ""
+                          } border-b border-gray-100  w-screen dark:text-white `}
                         >
                           {link.name}
                         </Link>
@@ -97,13 +97,6 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
         logo
       </Link>
       <div className=''>
-        {/* shopping cart */}
-        {/* <div className='relative'>
-          <LiaShoppingBagSolid className=' text-white  text-5xl' />
-          <span className=' bg-red-600 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0'>
-            50
-          </span>
-        </div> */}
         <Cart />
       </div>
     </div>

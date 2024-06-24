@@ -9,7 +9,6 @@ const SideBar = ({ data }: any) => {
   const pathname = usePathname();
   const isproActive = "/products" === pathname;
 
-
   const uniqueCategories = new Set();
   return (
     <div className=' md:w-[250px] mt-[45px] md:mt-12  dark:bg-dark-2 z-20 mr-6   '>
@@ -21,21 +20,25 @@ const SideBar = ({ data }: any) => {
             return null; // Prevent rendering individual category divs here
           })}
           {/* return category filter names */}
-          {/* mobile  sideBar */}
-          <Carousel className=' flex  md:hidden'>
-            <CarouselContent className=' w-screen '>
+
+          {/* mobile  sideBar --------------------------------------------------------------- */}
+
+          <Carousel className=' flex  md:hidden dark:bg-main-2 border-t border-t-white w-screen'>
+            <CarouselContent className=' '>
               {Array.from(uniqueCategories).map((category: any, index) => {
                 const isActive =
                   `/products/${category}` === pathname.replace(" ", "");
                 return (
                   <CarouselContent
-                    className=' w-screen py-2 ml-4'
+                    className='  py-2 ml-4'
                     key={index}
                   >
-                    <CarouselItem className=' w-fit'>
+                    <CarouselItem className=' w-auto'>
                       <Link
-                        className='w-fit'
-                        href={`/products/${category}`}
+                        className={`${
+                          isActive ? " font-semibold" : ""
+                        } text-white`}
+                        href={`/products/${category.replace(" ", "")}`}
                       >
                         {category}
                       </Link>

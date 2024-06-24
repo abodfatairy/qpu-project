@@ -10,13 +10,13 @@ const AddToCartButton = ({ item }: { item: Products }) => {
   if (qty) {
     return (
       <div className=''>
-        <Button>{qty} Added</Button>
+        <Button className='bg-main-1'> Added</Button>
       </div>
     );
   }
   return (
     <Button
-      className=' bg-main-1 flex-1 rounded-full  '
+      className='  bg-main-1   text-[10px] md:text-base w-full flex-1   '
       onClick={() => dispatch(increment(item))}
     >
       Add To Cart

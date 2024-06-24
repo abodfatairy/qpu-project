@@ -31,8 +31,8 @@ const Loader = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
   return (
-    <>
-      <div className=' md:flex-1 grid mt-9  md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 gap-x-10 p-4 mx-auto'>
+    <div className=' mt-3'>
+      <div className=' md:flex-1 grid   md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 gap-x-10   grid-cols-2 mr-5 '>
         {data.slice(start, end)?.map((item: Products, index) => {
           return (
             <div
@@ -60,7 +60,7 @@ const Loader = () => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -25,16 +25,7 @@ const Header = ({ profile }: { profile?: boolean }) => {
 
             {/* shopping cart */}
             <Cart />
-            {/* <Link
-              href={"/cart"}
-              className='relative mr-5'
-            >
-              <LiaShoppingBagSolid className=' text-white  text-5xl' />
-              <span className=' bg-red-500 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0 text-white'>
-                50
-              </span>
-            </Link> */}
-            {/* profile */}
+      
             <div className=''>
               <Link
                 href={"/sign-in"}
