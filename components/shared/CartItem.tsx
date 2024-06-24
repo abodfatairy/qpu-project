@@ -16,7 +16,7 @@ const CartItem = ({ item, qty }: { item: Products; qty: number }) => {
             width={100}
             height={100}
             alt='prodcut image'
-            className=' object-cover  '
+            className=' object-cover'
           />
         </div>
         <div className=' flex flex-col gap-2'>

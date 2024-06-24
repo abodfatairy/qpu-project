@@ -21,7 +21,7 @@ const Cart = () => {
   const qty = useAppSelector(totalCartItemsQty);
   // products inside Card
   const cartItems = useAppSelector((state) => state.cart.cartItems);
-  console.log(cartItems, "bz");
+ 
 
   const Router = useRouter();
   const totalPrice = useAppSelector(TotalPrice);

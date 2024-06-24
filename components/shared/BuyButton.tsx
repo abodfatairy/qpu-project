@@ -6,7 +6,7 @@ import React from "react";
 const BuyButton = ({ item }: { item: Products }) => {
   // const name = item.title;
   const whatsapp =
-    "https://wa.me/00963947749499?text=" +
+    "https://wa.me/963947749499?text=" +
     "hey i saw your product so i'd like to buy it, there is the detiles, " +
     "\n" +
     "Name of product: " +
