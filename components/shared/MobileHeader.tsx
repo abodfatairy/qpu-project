@@ -8,13 +8,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { CiMenuBurger, CiSearch } from "react-icons/ci";
-import { LiaShoppingBagSolid } from "react-icons/lia";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { ProfileLinks, links } from "@/constent";
 import Cart from "./Cart";
+import DarkMode from "./DarkMode";
 
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
@@ -41,26 +41,27 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                 </div>
               </SheetDescription>
 
-              <div className=' flex flex-col gap-3 items-center overflow-hidden   '>
+              <div className=' flex flex-col gap-3 items-center overflow-hidden text-black   '>
                 {links.map((link, index) => {
                   const isActive = link.link === pathname;
                   return (
                     <SheetTrigger
-                      className=''
+                      className=' text-black'
                       key={index}
                       asChild
                     >
                       <Link
                         href={link.link}
                         className={`${
-                          isActive ? " font-semibold" : ""
-                        } border-b border-gray-100  w-screen dark:text-white `}
+                          isActive ? " font-semibold" : " text-black"
+                        } border-b border-gray-100  w-full text-center dark:text-white    `}
                       >
                         {link.label}
                       </Link>
                     </SheetTrigger>
                   );
                 })}
+                <DarkMode />
               </div>
 
               {profile && (
@@ -77,7 +78,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                           href={link.href}
                           className={`${
                             isActive ? " font-bold" : ""
-                          } border-b border-gray-100  w-screen dark:text-white `}
+                          } border-b border-gray-100  w-screen dark:text-white text-black  `}
                         >
                           {link.name}
                         </Link>

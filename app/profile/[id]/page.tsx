@@ -22,12 +22,12 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
       )}
 
       {data ? (
-        <div className=' p-5 md:p-10 mt-3 flex md:ml-[270px] flex-col   md:flex-row  md:items-start   '>
+        <div className='  p-5 md:p-10 mt-5 flex md:ml-[270px] flex-col   md:flex-row  md:items-start   '>
           {/* first section */}
-          <div className=' flex md:flex-col items-center gap-5    md:w-[210px] md:max-w-[210px] overflow-hidden md:mr-10'>
+          <div className=' flex flex-col items-center gap-5    md:w-[210px] md:max-w-[210px] overflow-hidden md:mr-10 mb-4'>
             {/* image */}
-            <div className=' w-[120px] h-[120px] md:w-[200px] md:h-[200px] mb-8'>
-              <div className=' absolute w-[120px] h-[120px] md:w-[200px] md:h-[200px] rounded overflow-hidden'>
+            <div className=' w-[150px] h-[150px] md:w-[200px] md:h-[200px] mb-8'>
+              <div className=' absolute w-[150px] h-[150px] md:w-[200px] md:h-[200px] rounded overflow-hidden'>
                 <Image
                   src={data.image || "/assets/images/no-profile.webp"}
                   alt=''
@@ -39,11 +39,11 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
             {/* address */}
             <div className=' w-full  md:w-[200px]  flex flex-col  '>
               <div className='flex items-center justify-center '>
-                <p className=' bg-white  text-slate-300 text-sm'>Address</p>
+                <p className=' bg-white  text-slate-300 text-sm dark:text-black dark:font-semibold'>Address</p>
                 <div className='w-10  md:w-screen h-[1px] bg-slate-300 '></div>
               </div>
               {/* first Addres */}
-              <div className=' md:mt-5 px-5 md:px-0'>
+              <div className=' md:mt-5  md:px-0'>
                 <div className='flex items-center justify-between mb-2'>
                   <h1 className=' text-main-1 text-[14px] capitalize md:text-lg '>
                     {data.firstAddres}
@@ -57,7 +57,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                 </p>
               </div>
               {/* second Addres */}
-              <div className=' md:mt-5 px-5 md:px-0'>
+              <div className=' md:mt-5  md:px-0'>
                 <div className='flex items-center justify-between mb-2'>
                   <h1 className=' text-main-1  text-[14px] capitalize md:text-lg mr-2'>
                     {data.secondAddres}
@@ -82,7 +82,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
               {/* name and location */}
               <div className=' flex md:gap-x-5 items-center justify-between'>
                 {/* name */}
-                <h1 className=' text-3xl'>{data.name}</h1>
+                <h1 className=' text-3xl dark:text-white capitalize'>{data.name}</h1>
                 {/* location */}
                 <div className=' flex items-center gap-x-1 text-slate-400 '>
                   <FaLocationDot />

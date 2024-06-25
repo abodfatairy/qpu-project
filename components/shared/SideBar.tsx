@@ -77,7 +77,7 @@ const SideBar = ({ data }: any) => {
                     href={`/products/${category.replace(" ", "")}`}
                     className={`${
                       isActive
-                        ? " relative bg-main-6 rounded-br-lg rounded-l-[20px] before:absolute before:bg-transparent before:top-[47px] before:right-[0px] before:h-[35px] before:w-[35px] before:rounded-tr-[18px] before:shadow-5xl ......  after:absolute   after:bg-transparent after:bottom-[47px] after:right-0 after:h-[35px] after:w-[35px] after:rounded-tl-[18px] after:rotate-180   after:shadow-5xl text-main-1  "
+                        ? " relative bg-main-6 rounded-br-lg rounded-l-[20px] before:absolute before:bg-transparent before:top-[47px] before:right-[0px] before:h-[35px] before:w-[35px] before:rounded-tr-[18px] before:shadow-5xl ......  after:absolute   after:bg-transparent after:bottom-[47px] after:right-0 after:h-[35px] after:w-[35px] after:rounded-tl-[18px] after:rotate-180   after:shadow-5xl md:text-main-1 text-white   "
                         : " text-white"
                     }  flex w-screen  p-3 pl-8  items-center capitalize`}
                   >

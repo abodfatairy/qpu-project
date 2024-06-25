@@ -19,7 +19,7 @@ const BuyButton = ({ item, qty }: { item: Products; qty?: number }) => {
     qty! * item.price +
     "$";
   return (
-    <Button className='bg-main-1 flex-1  text-[10px] md:text-base'>
+    <Button className=' bg-main-1 px-2 py-1 h-8   md:h-10 md:px-4   text-[10px] md:text-base   '>
       <Link
         href={whatsapp}
         target='_blank'

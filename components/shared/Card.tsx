@@ -25,7 +25,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
         duration: 0.5,
       }}
       viewport={{ amount: 0 }}
-      className='  flex flex-col   w-40 md:w-96  max-w-[450px] shadow-sm rounded-xl  bg-yellow-50/10 dark:bg-dark-1 relative border-slate-200 border'
+      className='  flex flex-col   w-40 md:w-96 h-64 md:h-auto   max-w-[450px] shadow-sm rounded-xl  bg-yellow-50/10 dark:bg-dark-1 relative border-slate-200 border'
     >
       <Link
         href={`/products/product/${item?._id}`}
@@ -42,7 +42,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
       </Link>
       <div className=' flex-col flex gap-1 p-2  justify-between'>
         <div className=' flex  items-center justify-between md:items-start     '>
-          <h1 className='  font-semibold text-blue-800 dark:text-dark-4 tracking-[-1px] text-[13px]  text-center text-lg md:text-2xl mb-1 mt-5 md:mb-4 '>
+          <h1 className='  font-semibold text-blue-800 dark:text-dark-4 tracking-[-1px] text-[13px]  text-center  md:text-2xl mb-1 mt-5 md:mb-4 '>
             {item?.title}
           </h1>
           {/* stars rate */}
@@ -64,7 +64,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
               {item?.price}
             </p>
           </div>
-          <div className=' flex items-center justify-center gap-2 px-5 w-5 md:w-auto'>
+          <div className=' flex items-center justify-center gap-2  w-5 md:w-auto'>
             <AddToCartButton item={item} />
             <BuyButton item={item} />
           </div>

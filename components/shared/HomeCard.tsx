@@ -11,7 +11,7 @@ const HomeCard = ({ item }: HomeCardType) => {
   const router = useRouter();
   return (
     <div
-      onClick={() => router.push(`/products/${item.name}`)}
+      onClick={() => router.push(`/products/${item.name.replace(' ','')}`)}
       className=' rounded-lg overflow-hidden'
     >
       <Image
