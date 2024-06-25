@@ -38,16 +38,16 @@ const Cart = () => {
         </SheetTrigger>
         <SheetContent
           side={"right"}
-          className=' dark:bg-dark-2'
+          className=' dark:bg-dark-2 w-screen overflow-y-scroll '
         >
           <SheetHeader>
             <SheetTitle className=' text-center'>Logo</SheetTitle>
             <SheetDescription className=' '>
               {cartItems.length > 0 ? (
-                <>
+                <div className=''>
                   {cartItems?.map((item) => (
                     <div
-                      className=''
+                      className=' '
                       key={item.product._id}
                     >
                       <CartItem
@@ -66,7 +66,7 @@ const Cart = () => {
                       </span>
                     </p>
                   </div>
-                </>
+                </div>
               ) : (
                 <div className='flex flex-col gap-5 items-center justify-center h-screen'>
                   <h1 className=' text-2xl'> Your Card is Empty</h1>

@@ -33,7 +33,7 @@ const CartItem = ({ item, qty }: { item: Products; qty: number }) => {
         </div>
       </div>
       <div className=" flex items-center justify-center">
-        <BuyButton item={item} qty={qty } />
+        <BuyButton item={item} qty={qty} />
 
       </div>
     </>

@@ -25,7 +25,7 @@ export default function RootLayout({
           <Providers>
             <Suspense
               fallback={
-                <div className=" w-screen h-screen items-center justify-center">
+                <div className=" w-screen h-screen flex items-center justify-center">
                 <Image
                   src={"assets/images/bouncing-circles.svg"}
                   width={60}

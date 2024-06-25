@@ -1,3 +1,5 @@
+import AddToCartButton from "@/components/shared/AddToCartButton";
+import BuyButton from "@/components/shared/BuyButton";
 import Test from "@/components/shared/Test";
 import { Button } from "@/components/ui/button";
 import { getDataById } from "@/data";
@@ -14,10 +16,10 @@ const ProductDetails = async ({
   const product = (await getDataById(id)) as Products;
 
   return (
-    <div className='  flex   bg-main-6  justify-center mt-[50px] '>
+    <div className='  flex   bg-main-6  justify-center mt-[50px] md:h-screen '>
       {/* container */}
 
-      <div className='  flex flex-col border  rounded max-w-[800px] '>
+      <div className='  flex flex-col border  rounded items-center justify-center max-w-[1024px]  '>
         <div className=' flex flex-col md:flex-row'>
           {/* product images */}
           <div className=' md:flex-1'>
@@ -78,15 +80,16 @@ const ProductDetails = async ({
               <div className=' flex items-center justify-between pt-[50px]'>
                 <p className=' font-medium text-xl text-red-500'>
                   you&apos;re saving : $
-                  {
-                    product.previousPrice!
-                    -
-                  product.price!
-                  }
+                  {product.previousPrice! - product.price!}
                 </p>
-                <Button className=' bg-main-1 md:py-7 '>
+                {/* <Button className=' bg-main-1 md:py-7 '>
                   <IoBagAddOutline className=' text-white md:text-5xl  my-2' />
-                </Button>
+                </Button> */}
+                <BuyButton
+                  item={product}
+                  qty={1}
+                />
+                <AddToCartButton item={product} />
               </div>
             </div>
           </div>
