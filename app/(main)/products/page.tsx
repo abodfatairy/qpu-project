@@ -25,7 +25,7 @@ const ProductsPage = async ({
     <div className=' flex relative    flex-col md:flex-row  pb-3 '>
       <SideBar data={data} />
       <div className=' flex flex-col container justify-center items-center md:mt-4 p-5'>
-        <div className=' md:flex-1 grid mt-9 grid-cols-2  md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 gap-x-10 mr-5'>
+        <div className=' md:flex-1 grid mt-9 grid-cols-2  md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 gap-x-10 mr-10 ml-10'>
           {entries?.map((item: Products, index) => {
             return (
               <div

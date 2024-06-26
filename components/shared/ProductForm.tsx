@@ -14,8 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { UploadButton } from "@/lib/uploadthing";
-// import { UploadDropzone } from "@uploadthing/react";
 import { FileUploader } from "./FileUploader";
 import { useState } from "react";
 import { convertFileToUrl } from "@/lib/utils";

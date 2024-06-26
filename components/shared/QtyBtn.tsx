@@ -1,6 +1,4 @@
 import React from "react";
-
-// import { TrashIcon } from "@heroicons/react/24/solid";
 import { Button } from "../ui/button";
 import { IoTrashOutline } from "react-icons/io5";
 interface Props {

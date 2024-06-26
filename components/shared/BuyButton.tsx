@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Products } from "@/types";
 import Link from "next/link";
-import React from "react";
 
 const BuyButton = ({ item, qty }: { item: Products; qty?: number }) => {
-  // const name = item.title;
   const whatsapp =
     "https://wa.me/963947749499?text=" +
     "Hello i saw your product so i'd like to buy it, there is the detiles, " +

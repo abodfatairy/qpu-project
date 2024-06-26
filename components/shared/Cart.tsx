@@ -15,7 +15,7 @@ import { useAppSelector } from "@/redux/store";
 import { TotalPrice, totalCartItemsQty } from "@/redux/features/cartSlice";
 import CartItem from "./CartItem";
 import { Separator } from "../ui/separator";
-// import { usePathname } from "next/navigation";
+
 const Cart = () => {
   // number of Products in Cart
   const qty = useAppSelector(totalCartItemsQty);

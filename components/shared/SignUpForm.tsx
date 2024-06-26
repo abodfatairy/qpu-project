@@ -31,9 +31,7 @@ const formSchema = z.object({
   addrses: z.string().min(8, {
     message: "email must be at least 2 characters.",
   }),
-  age: z.string().min(8, {
-    message: "enter your data",
-  }),
+ 
 });
 export function SignUpForm() {
   // 1. Define your form.
@@ -44,7 +42,6 @@ export function SignUpForm() {
       password: "",
       email: "",
       addrses: "",
-      age: "",
       number: 0,
     },
   });
@@ -134,23 +131,6 @@ export function SignUpForm() {
               <FormControl>
                 <Input
                   placeholder='example:damas'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='age'
-          render={({ field }) => (
-            <FormItem className=' '>
-              <FormLabel>Age</FormLabel>
-              <FormControl>
-                <Input
-                  type='date'
-                  placeholder='City'
                   {...field}
                 />
               </FormControl>

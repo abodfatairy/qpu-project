@@ -12,7 +12,10 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+
 }) {
+
+
   return (
     <html lang={"en"}>
       <body className={` bg-main-6 dark:bg-dark-2`}>
@@ -25,17 +28,17 @@ export default function RootLayout({
           <Providers>
             <Suspense
               fallback={
-                <div className=" w-screen h-screen flex items-center justify-center">
-                <Image
-                  src={"assets/images/bouncing-circles.svg"}
-                  width={60}
-                  height={60}
-                  alt='loading'
+                <div className=' w-screen h-screen flex items-center justify-center'>
+                  <Image
+                    src={"assets/images/bouncing-circles.svg"}
+                    width={60}
+                    height={60}
+                    alt='loading'
                   />
-                  </div>
+                </div>
               }
             >
-              {children}
+                  {children}
             </Suspense>
           </Providers>
         </ThemeProvider>

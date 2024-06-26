@@ -1,7 +1,6 @@
 "use client";
 import Back from "@/components/shared/Back";
 import { SettingForm } from "@/components/shared/SettingForm";
-import { getData } from "@/data";
 import { useParams } from "next/navigation";
 
 const SettingsPage = () => {

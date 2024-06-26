@@ -7,13 +7,6 @@ import { increment, productQty } from "@/redux/features/cartSlice";
 const AddToCartButton = ({ item }: { item: Products }) => {
   const qty = useAppSelector((state) => productQty(state, item._id));
   const dispatch = useAppDispatch();
-  // if (qty) {
-  //   return (
-  //     <div className=''>
-  //       <Button className='bg-main-1'> Added</Button>
-  //     </div>
-  //   );
-  // }
   return (
     <Button
       className='  bg-main-1 px-2 py-1 h-8   md:h-10 md:px-4   text-[10px] md:text-base    '

@@ -1,7 +1,6 @@
 import { Products } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { MotionDiv } from "./MotionDiv";
@@ -46,7 +45,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
             {item?.title}
           </h1>
           {/* stars rate */}
-          <div className=' flex gap-1 z-40 mt-5'>
+          <div className=' flex gap-1  mt-5'>
             <FaStar className=' text-yellow-400 text-[10px] md:text-base' />
             <FaStar className=' text-yellow-400 text-[10px] md:text-base' />
             <FaStar className=' text-yellow-400 text-[10px] md:text-base' />

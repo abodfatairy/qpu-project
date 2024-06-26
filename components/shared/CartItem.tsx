@@ -1,7 +1,5 @@
 import { Products } from "@/types";
 import Image from "next/image";
-import React from "react";
-import { Separator } from "@/components/ui/separator";
 import QtyBtn from "./QtyBtn";
 import { decrement, increment } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/store";

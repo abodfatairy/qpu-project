@@ -8,8 +8,8 @@ import Search from "./Search";
 const Header = ({ profile }: { profile?: boolean }) => {
   return (
     <>
-      <div className='  fixed top-0  w-screen bg-main-2   hidden md:flex z-40 p-2  '>
-        <div className=' container md:mx-auto md:flex  justify-between items-center '>
+      <div className='  fixed top-0  w-screen bg-main-2   hidden lg:flex z-40 p-2  '>
+        <div className=' container lg:mx-auto lg:flex  justify-between items-center '>
           <Link
             href={"/"}
             className=' text-white'
@@ -25,7 +25,7 @@ const Header = ({ profile }: { profile?: boolean }) => {
 
             {/* shopping cart */}
             <Cart />
-      
+
             <div className=''>
               <Link
                 href={"/sign-in"}
@@ -41,7 +41,7 @@ const Header = ({ profile }: { profile?: boolean }) => {
           </div>
         </div>
       </div>
-      <div className=' flex md:hidden'>
+      <div className=' flex lg:hidden'>
         <MobileHeader profile={profile} />
       </div>
     </>

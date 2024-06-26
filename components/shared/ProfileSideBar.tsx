@@ -1,5 +1,4 @@
 "use client";
-// import { ProfileLinks } from "@/constent";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -30,8 +29,8 @@ const ProfileSideBar = ({ id }: { id?: number }) => {
   const pathname = usePathname();
   return (
     <>
-      <div className=' w-[250px] '>
-        <div className=' pl-5 flex flex-col w-[250px] fixed  dark:bg-dark-2  bg-main-2 '>
+      <div className=' w-[250px]'>
+        <div className=' pl-5  flex flex-col w-[250px] fixed  dark:bg-dark-2  bg-main-2 '>
           <div className=' py-10  text-white'>Profile</div>
           <div className='h-[calc(100vh-110px)] '>
             {ProfileLinks.map((item) => {
@@ -67,16 +66,16 @@ const ProfileSideBar = ({ id }: { id?: number }) => {
                 </div>
               );
             })}
+            <Link
+              href={"/sign-in"}
+              className=''
+            >
+              <div className=' flex items-center gap-2  border-t border-main-4'>
+                <PiSignInLight className=" text-white" />
+                <p className=' font-medium text-white'>sign in</p>
+              </div>
+            </Link>
           </div>
-          <Link
-            href={"/sign-in"}
-            className=''
-          >
-            <div className=' flex items-center gap-2 justify-center border-t border-main-4'>
-              <PiSignInLight />
-              <p className=' font-medium'>sign in</p>
-            </div>
-          </Link>
         </div>
       </div>
     </>

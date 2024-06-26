@@ -1,12 +1,10 @@
 import AddToCartButton from "@/components/shared/AddToCartButton";
 import BuyButton from "@/components/shared/BuyButton";
 import Test from "@/components/shared/Test";
-import { Button } from "@/components/ui/button";
 import { getDataById } from "@/data";
 import { Products } from "@/types";
 import Image from "next/image";
 import React from "react";
-import { IoBagAddOutline } from "react-icons/io5";
 
 const ProductDetails = async ({
   params: { id },
@@ -82,9 +80,6 @@ const ProductDetails = async ({
                   you&apos;re saving : $
                   {product.previousPrice! - product.price!}
                 </p>
-                {/* <Button className=' bg-main-1 md:py-7 '>
-                  <IoBagAddOutline className=' text-white md:text-5xl  my-2' />
-                </Button> */}
                 <BuyButton
                   item={product}
                   qty={1}
