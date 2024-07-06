@@ -6,12 +6,16 @@ import { FaStar } from "react-icons/fa";
 import { MotionDiv } from "./MotionDiv";
 import BuyButton from "./BuyButton";
 import AddToCartButton from "./AddToCartButton";
+import { CiEdit } from "react-icons/ci";
 const variants = {
   hidden: {
     opacity: 0,
   },
   visible: { opacity: 1 },
 };
+
+let isMe = true;
+
 const Card = ({ item, index }: { item: Products; index: number }) => {
   return (
     <MotionDiv
@@ -69,6 +73,14 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
           </div>
         </div>
       </div>
+      {isMe && (
+        <Link
+          href={`/products/product/${item?._id}/update`}
+          className=' absolute top-5 right-6 z-20 bg-main-2 p-2 rounded-full'
+        >
+          <CiEdit className=' text-white text-lg  md:text-3xl' />
+        </Link>
+      )}
     </MotionDiv>
   );
 };

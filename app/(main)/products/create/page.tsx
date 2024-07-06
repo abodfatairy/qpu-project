@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className='  '>
       <div className=' mt-[100px]  p-10 '>
-        <ProductForm />
+        <ProductForm type='Create' />
       </div>
     </div>
   );

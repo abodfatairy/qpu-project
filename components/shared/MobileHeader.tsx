@@ -8,13 +8,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { CiMenuBurger, CiSearch } from "react-icons/ci";
-import { Input } from "../ui/input";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { ProfileLinks, links } from "@/constent";
 import Cart from "./Cart";
 import DarkMode from "./DarkMode";
+import Search from "./Search";
 
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
@@ -32,12 +31,8 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
             <SheetHeader className=''>
               <SheetTitle>Logo</SheetTitle>
               <SheetDescription>
-                <div className='flex items-center justify-center dark:bg-dark-2'>
-                  <Input
-                    className=' bg-gray-200 outline-none border-none rounded-r-none focus-visible:ring-0 placeholder:text-lg '
-                    placeholder='search...'
-                  />
-                  <CiSearch className=' bg-gray-400 rounded-l-none   text-white mr text-3xl px-1 rounded-md h-10' />
+                <div className=' dark:bg-dark-2'>
+                  <Search />
                 </div>
               </SheetDescription>
 

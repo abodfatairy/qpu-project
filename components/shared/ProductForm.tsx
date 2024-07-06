@@ -17,12 +17,13 @@ import { Input } from "@/components/ui/input";
 import { FileUploader } from "./FileUploader";
 import { useState } from "react";
 import { convertFileToUrl } from "@/lib/utils";
+import { Products } from "@/types";
 
 const formSchema = z.object({
-  productName: z.string().min(3, {
+  title: z.string().min(3, {
     message: "product Name must be at least 3 characters.",
   }),
-  productImg: z.string(),
+  image: z.string(),
   productImg2: z.string(),
   productImg3: z.string(),
   productImg4: z.string(),
@@ -32,31 +33,37 @@ const formSchema = z.object({
   category: z.string(),
   description: z.string(),
 });
-export function ProductForm() {
-  const [files, setFiles] = useState<File[]>([]);
+const productDefaultValues = {
+  title: "",
+  brand: "",
+  price: "",
+  previousPrice: "",
+  category: "",
+  image: "",
+  productImg2: "",
+  productImg3: "",
+  productImg4: "",
+  description: "",
   
+};
 
+type ProductFormProps = {
+  type: "Create" | "Update";
+  product?: Products;
+};
+export function ProductForm({ type, product }: ProductFormProps) {
+  const [files, setFiles] = useState<File[]>([]);
+  const initialValues =
+    product && type === "Update" ? product : productDefaultValues;
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      productName: "",
-      brand: "",
-      price: "",
-      previousPrice: "",
-      category: "",
-      productImg: "",
-      productImg2: "",
-      productImg3: "",
-      productImg4: "",
-      description: "",
-    },
+    defaultValues: initialValues,
   });
   // ...
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-
   }
   return (
     <Form {...form}>
@@ -66,12 +73,13 @@ export function ProductForm() {
       >
         <FormField
           control={form.control}
-          name='productName'
+          name='title'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input
+                 className=' placeholder:text-slate-300 text-black'
                   placeholder=''
                   {...field}
                 />
@@ -84,7 +92,7 @@ export function ProductForm() {
         <div className='flex justify-around items-center p-5  flex-col md:flex-row'>
           <FormField
             control={form.control}
-            name='productImg'
+            name='image'
             render={({ field }) => (
               <FormItem className=' w-fit '>
                 <FormLabel>Product Image</FormLabel>
@@ -160,7 +168,9 @@ export function ProductForm() {
             <FormItem className=' '>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input
+                 className=' placeholder:text-slate-300 text-black'
+                  {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -174,7 +184,8 @@ export function ProductForm() {
               <FormLabel>Price</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='0912345678'
+                 className=' placeholder:text-slate-300 text-black'
+                  placeholder='000'
                   {...field}
                 />
               </FormControl>
@@ -190,7 +201,8 @@ export function ProductForm() {
               <FormLabel>brand</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='example:damas'
+                 className=' placeholder:text-slate-300 text-black'
+                  placeholder='apple'
                   {...field}
                 />
               </FormControl>
@@ -206,7 +218,8 @@ export function ProductForm() {
               <FormLabel>Previous Price</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='example:damas'
+                 className=' placeholder:text-slate-300 text-black'
+                  placeholder='666'
                   {...field}
                 />
               </FormControl>
@@ -222,7 +235,8 @@ export function ProductForm() {
               <FormLabel>Category</FormLabel>
               <FormControl>
                 <Input
-                  placeholder='example:damas'
+                 className=' placeholder:text-slate-300 text-black'
+                  placeholder=''
                   {...field}
                 />
               </FormControl>
