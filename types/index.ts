@@ -1,8 +1,8 @@
 export interface Products {
   _id: number;
   title: string;
-  price: string;
-  previousPrice?: string; // Optional property
+  price: number;
+  previousPrice?: number; // Optional property
   description: string;
   category: string;
   image: string;

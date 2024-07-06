@@ -28,23 +28,22 @@ const formSchema = z.object({
   productImg3: z.string(),
   productImg4: z.string(),
   brand: z.string(),
-  price: z.string(),
-  previousPrice: z.string(),
+  price: z.number(),
+  previousPrice: z.number(),
   category: z.string(),
   description: z.string(),
 });
 const productDefaultValues = {
   title: "",
   brand: "",
-  price: "",
-  previousPrice: "",
+  price: 0,
+  previousPrice: 0,
   category: "",
   image: "",
   productImg2: "",
   productImg3: "",
   productImg4: "",
   description: "",
-  
 };
 
 type ProductFormProps = {
@@ -79,7 +78,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
+                  className=' placeholder:text-slate-300 text-black'
                   placeholder=''
                   {...field}
                 />
@@ -169,8 +168,9 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
-                  {...field} />
+                  className=' placeholder:text-slate-300 text-black'
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -184,7 +184,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Price</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
+                  className=' placeholder:text-slate-300 text-black'
                   placeholder='000'
                   {...field}
                 />
@@ -201,7 +201,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>brand</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
+                  className=' placeholder:text-slate-300 text-black'
                   placeholder='apple'
                   {...field}
                 />
@@ -218,7 +218,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Previous Price</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
+                  className=' placeholder:text-slate-300 text-black'
                   placeholder='666'
                   {...field}
                 />
@@ -235,7 +235,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Category</FormLabel>
               <FormControl>
                 <Input
-                 className=' placeholder:text-slate-300 text-black'
+                  className=' placeholder:text-slate-300 text-black'
                   placeholder=''
                   {...field}
                 />
