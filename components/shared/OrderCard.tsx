@@ -12,6 +12,8 @@ const OrderCard = ({ price, image, user, productName }: OrderCardProps) => {
       {/* product image */}
       <div className='w-60 h-40 md:w-[250px] md:h-[160px]  xl:w-[320px] xl:h-[200px]  '>
         <div className=' absolute w-60 h-40 md:w-[250px] md:h-[160px]  xl:w-[320px] xl:h-[200px]  rounded-md '>
+
+          
           <Image
             src={image}
             alt='product image'
