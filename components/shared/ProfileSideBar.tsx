@@ -29,8 +29,8 @@ const ProfileSideBar = ({ id }: { id?: number }) => {
   const pathname = usePathname();
   return (
     <>
-      <div className=' w-[250px]'>
-        <div className=' pl-5  flex flex-col w-[250px] fixed  dark:bg-dark-2  bg-main-2 '>
+      <div className=' w-[250px] z-20 fixed top-0 left-0'>
+        <div className=' pl-5  flex flex-col w-[250px] fixed  '>
           <div className=' py-10  text-white'>Profile</div>
           <div className='h-[calc(100vh-110px)] '>
             {ProfileLinks.map((item) => {

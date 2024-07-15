@@ -15,6 +15,7 @@ import { useAppSelector } from "@/redux/store";
 import { TotalPrice, totalCartItemsQty } from "@/redux/features/cartSlice";
 import CartItem from "./CartItem";
 import { Separator } from "../ui/separator";
+import CustomButton from "../ui/CustomButton";
 
 const Cart = () => {
   // number of Products in Cart
@@ -41,8 +42,9 @@ const Cart = () => {
           className=' dark:bg-dark-2 w-screen overflow-y-scroll '
         >
           <SheetHeader>
-            <SheetTitle className=' text-center'>Logo</SheetTitle>
-            <SheetDescription className=' '>
+            <SheetTitle className=' text-center dark:text-white'>Logo</SheetTitle>
+            <SheetDescription className=''>
+              <SheetTrigger className=" absolute top-6 right-5 text-white text-xl">X</SheetTrigger>
               {cartItems.length > 0 ? (
                 <div className=''>
                   {cartItems?.map((item) => (
@@ -56,8 +58,8 @@ const Cart = () => {
                       />
                     </div>
                   ))}
-                  <Separator />
-                  <div className=' flex items-center justify-between'>
+                  <Separator className="mt-4" />
+                  <div className=' flex items-center justify-between mt-4'>
                     <p className=' text-main-1 text-xl'>Total Price is:</p>
                     <p className='text-red-400'>
                       $
@@ -77,12 +79,15 @@ const Cart = () => {
                     height={60}
                     className=''
                   />
-                  <Button
-                    className=' bg-main-1'
-                    onClick={() => Router.push("/products")}
-                  >
-                    <SheetTrigger>Continue Shopping </SheetTrigger>
-                  </Button>
+                
+          
+                    <SheetTrigger>
+                      <CustomButton
+                        title='Continue Shopping'
+                        onClick={() => Router.push("/products")}
+                      />{" "}
+                    </SheetTrigger>
+           
                 </div>
               )}
             </SheetDescription>

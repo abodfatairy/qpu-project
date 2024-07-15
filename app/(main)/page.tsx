@@ -1,4 +1,4 @@
-import Banner from "@/components/shared/Banner";
+
 import HeroBanner from "@/components/shared/HerroBanner";
 import HomeCard from "@/components/shared/HomeCard";
 import { SpotlightPreview } from "@/components/ui/Light";
@@ -10,12 +10,12 @@ export default function Home({
   searchParams: { id: string | undefined };
 }) {
   return (
-    <main className='  mt-52 h-screen  '>
+    <main className=' mt-11  md:mt-52 h-screen  '>
       <SpotlightPreview>
         {/* <Banner /> */}
         <div className=' flex flex-col'>
           <HeroBanner />
-          <div className=''>
+          <div className=' '>
             <div className=' container grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3   h-screen   mt-3  xl:ml-auto  gap-3  md:h-auto'>
               {CategorysNames.map((item) => (
                 <div

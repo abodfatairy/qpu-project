@@ -11,8 +11,8 @@ const SideBar = ({ data }: any) => {
 
   const uniqueCategories = new Set();
   return (
-    <div className=' md:w-[250px] mt-[45px] md:mt-12  dark:bg-dark-2 z-20 mr-6   '>
-      <div className=' md:h-screen md:pl-5  md:w-30      bg-main-2 dark:bg-dark-2  pb-2 md:pb-0  items-center gap-3 fixed '>
+    <div className=' md:w-[250px]     z-20 mr-6   '>
+      <div className=' md:h-screen md:pl-5  md:w-30      bg-main-2 dark:bg-dark-2  pb-2 md:pb-0  items-center gap-3 top-0 fixed '>
         <div className=''>
           {data?.map((item: Products) => {
             uniqueCategories.add(item.category);
@@ -23,8 +23,8 @@ const SideBar = ({ data }: any) => {
 
           {/* mobile  sideBar --------------------------------------------------------------- */}
 
-          <Carousel className=' flex  md:hidden dark:bg-main-2 border-t border-t-white w-screen'>
-            <CarouselContent className=' '>
+          <Carousel className=' flex  md:hidden dark:bg-dark-2 border-t border-t-white w-screen  mt-14'>
+            <CarouselContent className='  '>
               {Array.from(uniqueCategories).map((category: any, index) => {
                 const isActive =
                   `/products/${category}` === pathname.replace(" ", "");

@@ -28,7 +28,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
         duration: 0.5,
       }}
       viewport={{ amount: 0 }}
-      className='  flex flex-col   w-40 md:w-96 h-64 md:h-auto   max-w-[450px] shadow-sm rounded-xl  bg-yellow-50/10 dark:bg-dark-1 relative border-slate-200 border'
+      className='  flex flex-col   w-40 md:w-96 h-64 md:h-auto   max-w-[450px] shadow-sm rounded-xl  bg-yellow-50/10 dark:bg-dark-2 relative border-slate-200 border'
     >
       <Link
         href={`/products/product/${item?._id}`}
@@ -43,8 +43,8 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
           />
         </div>
       </Link>
-      <div className=' flex-col flex gap-1 p-2  justify-between'>
-        <div className=' flex  items-center justify-between md:items-start     '>
+      <div className=' flex-col flex gap-1 p-2 mt-10  justify-between'>
+        <div className=' flex  items-center justify-around md:items-start     '>
           <h1 className='  font-semibold text-blue-800 dark:text-dark-4 tracking-[-1px] text-[13px]  text-center  md:text-2xl mb-1 mt-5 md:mb-4 '>
             {item?.title}
           </h1>
@@ -67,7 +67,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
               {item?.price}
             </p>
           </div>
-          <div className=' flex items-center justify-center gap-2  w-5 md:w-auto'>
+          <div className=' flex items-center justify-between   gap-1   '>
             <AddToCartButton item={item} />
             <BuyButton
               item={item}
@@ -79,7 +79,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
       {isMe && (
         <Link
           href={`/products/product/${item?._id}/update`}
-          className=' absolute top-5 right-6 z-20 bg-main-2 p-2 rounded-full'
+          className=' absolute top-5 right-6  bg-dark-2 p-2 rounded-full'
         >
           <CiEdit className=' text-white text-lg#020617  md:text-3xl' />
         </Link>

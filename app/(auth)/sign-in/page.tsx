@@ -9,11 +9,10 @@ const SignIn = () => {
     <div className=' w-screen flex'>
       <div className=' bg-white/50 dark:bg-slate-950 p-10  flex items-center justify-center flex-col relative w-screen max-w-4xl shadow-2xl    border border-slate-700 h-screen '>
         <div className='w-screen max-w-[500px] xl:max-w-[800px]  p-5'>
-     
           {/* FORM */}
           <SignInForm />
           <div className=' text-center flex items-center justify-center flex-col gap-5 '>
-            <span className=' font-serif  mt-4 border-b border-gray-200 pb-3 capitalize '>
+            <span className=' font-serif  mt-4 border-b border-gray-200 pb-3 capitalize dark:text-white '>
               or continue with
             </span>
             <div className=' flex  gap-5 items-center justify-center '>
@@ -33,7 +32,17 @@ const SignIn = () => {
                   height={27}
                 />
               </Link>
-          
+              <div className=' absolute top-1 right-3 flex md:hidden'>
+                <span className=' text-[12px] text-white'>
+                  Not a member?{" "}
+                  <Link
+                    className=' text-blue-500   dark:hover:text-blue-300 xl:text-xl'
+                    href={"/sign-up"}
+                  >
+                    Register now
+                  </Link>
+                </span>
+              </div>
             </div>
           </div>
         </div>

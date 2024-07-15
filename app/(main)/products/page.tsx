@@ -3,6 +3,7 @@ import Card from "@/components/shared/Card";
 import Loader from "@/components/shared/Loader";
 import Search from "@/components/shared/Search";
 import SideBar from "@/components/shared/SideBar";
+import { AuroraBackgroundDemo } from "@/components/ui/teeest";
 import { getData } from "@/data";
 import { Products } from "@/types";
 
@@ -26,6 +27,8 @@ const ProductsPage = async ({
     <div className=' flex relative    flex-col md:flex-row  pb-3 '>
       <SideBar data={data} />
       <div className=' flex flex-col container justify-center items-center md:mt-4 p-5'>
+      <AuroraBackgroundDemo>
+
         <div className=" absolute top-0 right-0">
         <Search />
         </div>
@@ -33,13 +36,13 @@ const ProductsPage = async ({
           {entries?.map((item: Products, index) => {
             return (
               <div
-                className=' mx-auto'
-                key={item._id}
+              className=' mx-auto'
+              key={item._id}
               >
                 <Card
                   item={item}
                   index={index}
-                />
+                  />
               </div>
             );
           })}
@@ -47,6 +50,7 @@ const ProductsPage = async ({
           <AddButton />
         </div>
         {!searchInput && <Loader />}
+          </AuroraBackgroundDemo>
       </div>
     </div>
   );

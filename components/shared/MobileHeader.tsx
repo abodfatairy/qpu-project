@@ -18,15 +18,15 @@ import Search from "./Search";
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
   return (
-    <div className=' fixed top-0 w-screen  bg-main-2  flex items-center justify-between p-2 z-50 '>
-      <div className=' dark:bg-main-2'>
+    <div className=' fixed top-0 w-screen  bg-main-2 dark:bg-dark-2 border-b border-slate-700  flex items-center justify-between p-2 z-50 '>
+      <div className=' dark:bg-main-2 '>
         <Sheet>
-          <SheetTrigger className=' dark:bg-main-2 py-2 '>
+          <SheetTrigger className=' dark:bg-dark-2 py-2 '>
             <CiMenuBurger className=' dark:text-white' />
           </SheetTrigger>
           <SheetContent
             side={"left"}
-            className='  dark:bg-main-2 '
+            className='  dark:bg-dark-2 '
           >
             <SheetHeader className=''>
               <SheetTitle>Logo</SheetTitle>
@@ -49,7 +49,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                         href={link.link}
                         className={`${
                           isActive ? " font-semibold" : " text-black"
-                        } border-b border-gray-100  w-full text-center dark:text-white    `}
+                        } border-b border-slate-900  w-full text-center dark:text-white    `}
                       >
                         {link.label}
                       </Link>
@@ -88,7 +88,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
       </div>
       <Link
         href={"/"}
-        className=''
+        className=' dark:text-white'
       >
         logo
       </Link>

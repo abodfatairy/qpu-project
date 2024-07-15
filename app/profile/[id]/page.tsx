@@ -11,7 +11,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
   return (
     <>
       {isMe ? (
-        <div className=' hidden lg:flex flex-1'>
+        <div className=' hidden lg:flex '>
           <ProfileSideBar id={id} />
         </div>
       ) : (
@@ -19,7 +19,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
       )}
 
       {data ? (
-        <div className=' container  relative lg:max-w-[750px]  xl:max-w-[1024px]      mt-5 flex flex-col   items-center  flex-1   '>
+        <div className=' container  relative lg:max-w-[750px]  xl:max-w-[1024px]      mt-5 flex flex-col   items-center  flex-1  bg-red   '>
           {/* cover image */}
           <div className=' w-screen h-52  absolute sm:max-w-[800px] lg:max-w-[750px]  xl:max-w-[1024px]   lg:ml-52   '>
             <Image
@@ -64,33 +64,31 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
             <div className=' p-5 lg:p-0 flex  flex-col   justify-center   lg:ml-96 xl:ml-64   lg:max-w-[750px]  xl:max-w-[1524px] '>
               {/* info */}
               <div className=' flex flex-col gap-5 p-2'>
-                <h3 className=' text-slate-400 mb-2 text-center '>
-                  Information
-                </h3>
+                <h3 className='  mb-2 text-center text-white '>Information</h3>
                 {/* phone number */}
-                <div className=' text-slate-600 font-bold flex justify-between  items-center border-b border-slate-200 '>
+                <div className=' text-white font-bold flex justify-between  items-center border-b border-slate-200 '>
                   <span className=' flex items-center gap-5'>
                     <FaPhoneFlip className=' text-main-1' /> :
                   </span>
-                  <span className=' text-main-1 font-normal ml-11'>
+                  <span className=' text-white font-normal ml-11'>
                     {data.phoneNumber}
                   </span>
                 </div>
                 {/* location */}
-                <div className=' text-slate-600 font-bold flex justify-between items-center border-b border-slate-200 '>
+                <div className=' text-white font-bold flex justify-between items-center border-b border-slate-200 '>
                   <span className=' flex items-center gap-5'>
                     <FaLocationDot className=' text-main-1' /> :
                   </span>
-                  <span className=' text-main-1 font-normal ml-11'>
+                  <span className=' text-white font-normal ml-11'>
                     {data.firstAddres}
                   </span>
                 </div>
                 {/* email */}
-                <div className=' text-slate-600 font-bold flex justify-between items-center border-b border-slate-200 '>
+                <div className=' text-white font-bold flex justify-between items-center border-b border-slate-200 '>
                   <span className=' flex items-center gap-5'>
                     <MdAlternateEmail className=' text-main-1' /> :
                   </span>
-                  <span className=' text-main-1 font-normal ml-11'>
+                  <span className=' text-white font-normal ml-11'>
                     {data.email}
                   </span>
                 </div>
@@ -100,7 +98,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
               <div className=' w-full    flex flex-col p-2  gap-5 justify-between '>
                 {/* adress title */}
                 <div className='flex items-center justify-center '>
-                  <p className=' bg-white  text-slate-400 text-sm dark:text-black dark:font-semibold'>
+                  <p className=' text-black text-sm dark:text-white dark:font-semibold p-2'>
                     Address
                   </p>
                   {/* <div className=' hidden lg:flex  lg:w-screen h-[1px] bg-slate-300 '></div> */}

@@ -6,7 +6,7 @@ import React from "react";
 
 const SignUp = () => {
   return (
-    <div className=' w-screen h-screen flex'>
+    <div className=' w-screen md:h-screen flex'>
       {/* <SparklesCore /> */}
       <SparklesPreview/>
       <div className=' shadow-2xl    border border-slate-700  rounded  w-full '>

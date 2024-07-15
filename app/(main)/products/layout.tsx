@@ -1,7 +1,7 @@
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
-
-export default function MainLayout({
+import { AuroraBackgroundDemo } from "@/components/ui/teeest";
+export default function ProductLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -9,15 +9,10 @@ export default function MainLayout({
   return (
     <div className='  flex flex-col '>
       <Header />
-       <main className=' mt-4 flex-1 '>
-     
-
-     {children}
+      <main className=' mt-20 flex-1  '>
+        <AuroraBackgroundDemo>{children}</AuroraBackgroundDemo>
+      </main>
  
-     </main>
-      <div className=''>
-        <Footer />
-      </div>
     </div>
   );
 }
