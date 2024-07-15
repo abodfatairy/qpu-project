@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import CustomButton from "../ui/CustomButton";
 
 const formSchema = z.object({
   fullname: z.string().min(3, {
@@ -55,7 +56,7 @@ export function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='  dark:text-dark-4 space-y-3 text-slate-400 flex-1'
+        className='  dark:text-dark-4 space-y-5 text-slate-400 flex-1'
       >
         <FormField
           control={form.control}
@@ -137,13 +138,15 @@ export function SignUpForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
-        <Button
+        /> 
+
+        <CustomButton title='Sign up' className="w-full " />
+        {/* <Button
           type='submit'
           className=' mt-2'
         >
           Sign up
-        </Button>
+        </Button> */}
       </form>
     </Form>
   );

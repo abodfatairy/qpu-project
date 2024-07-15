@@ -1,4 +1,4 @@
-import Header from "@/components/shared/Header";
+import Header2 from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 export default function MainLayout({
   children,
@@ -7,7 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <div className='  flex flex-col '>
-      <Header />
+      <Header2 />
       <main className=' mt-4 flex-1 '>{children}</main>
       <div className=''>
         <Footer />

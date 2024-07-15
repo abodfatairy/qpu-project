@@ -28,10 +28,10 @@ const Cart = () => {
   return (
     <div className='dark:bg-dark-2'>
       <Sheet>
-        <SheetTrigger className=' dark:bg-main-2  pb-2'>
+        <SheetTrigger className=' dark:bg-dark-2  pb-2'>
           <div className='relative mr-5   '>
-            <LiaShoppingBagSolid className=' text-white  text-5xl' />
-            <span className=' bg-red-500 text-sm w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0 text-white'>
+            <LiaShoppingBagSolid className=' text-white  text-4xl' />
+            <span className=' bg-red-500 text-[10px] w-[15px] h-[15px] px-1 rounded-full flex items-center justify-center absolute top-0 right-0 text-white'>
               {qty}
             </span>
           </div>

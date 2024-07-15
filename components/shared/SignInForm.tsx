@@ -1,10 +1,7 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import CustomButton from "../ui/CustomButton";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -39,17 +37,16 @@ export function SignInForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-8 flex-1'
+        className='space-y-8  '
       >
         <FormField
           control={form.control}
           name='email'
           render={({ field }) => (
             <FormItem className=' '>
-    
               <FormControl>
                 <Input
-                  className=" "
+                  className=' '
                   placeholder='example@example.com'
                   {...field}
                 />
@@ -74,7 +71,11 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <Button type='submit' className=" w-full">Sign in</Button>
+        <CustomButton
+          title='Sign in'
+          className='w-full'
+          type='submit'
+        />
       </form>
     </Form>
   );

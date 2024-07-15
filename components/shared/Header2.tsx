@@ -5,10 +5,10 @@ import DarkMode from "./DarkMode";
 import Cart from "./Cart";
 import Search from "./Search";
 
-const Header = ({ profile }: { profile?: boolean }) => {
+const Header2 = ({ profile }: { profile?: boolean }) => {
   return (
     <>
-      <div className='  fixed top-5  left-[50%] translate-x-[-50%]    bg-main-2 dark:bg-dark-2 border border-slate-600  rounded-full   hidden lg:flex z-40 p-2   '>
+      <div className='  fixed top-0  w-screen bg-main-2   hidden lg:flex z-40 p-2  '>
         <div className=' container lg:mx-auto lg:flex  justify-between items-center '>
           <Link
             href={"/"}
@@ -21,7 +21,7 @@ const Header = ({ profile }: { profile?: boolean }) => {
           </div>
           <div className=' flex items-center justify-center gap-2  '>
             {/* search */}
-            {/* <Search /> */}
+            <Search />
 
             {/* shopping cart */}
             <Cart />
@@ -48,4 +48,4 @@ const Header = ({ profile }: { profile?: boolean }) => {
   );
 };
 
-export default Header;
+export default Header2;

@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 const Banner = () => {
   return (
-    <div className=' md:h-[60vh] w-screen'>
+    <div className=' md:h-[60vh] w-screen z-20'>
       <Carousel
         plugins={[
           Autoplay({

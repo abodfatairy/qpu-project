@@ -17,7 +17,7 @@ const Categorys = () => {
           >
           <Link
           href={link.link}
-          className={`${isActive ? " text-blue-900" : " text-main-4"} text-xl font-serif`}
+          className={`${isActive ? " text-blue-200" : " dark:text-slate-200 text-main-4"} text-xl `}
           >
             {link.label}
           </Link>

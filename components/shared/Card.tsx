@@ -69,7 +69,10 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
           </div>
           <div className=' flex items-center justify-center gap-2  w-5 md:w-auto'>
             <AddToCartButton item={item} />
-            <BuyButton item={item} />
+            <BuyButton
+              item={item}
+              qty={1}
+            />
           </div>
         </div>
       </div>
@@ -78,7 +81,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
           href={`/products/product/${item?._id}/update`}
           className=' absolute top-5 right-6 z-20 bg-main-2 p-2 rounded-full'
         >
-          <CiEdit className=' text-white text-lg  md:text-3xl' />
+          <CiEdit className=' text-white text-lg#020617  md:text-3xl' />
         </Link>
       )}
     </MotionDiv>

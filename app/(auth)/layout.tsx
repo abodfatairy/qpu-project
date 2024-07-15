@@ -6,7 +6,7 @@ export default function AuthLayout({
 }) {
   return (
       <div>
-        <main className=' h-[calc(100vh)]  w-screen flex items-center justify-center overflow-hidden  relative  '>
+        <main className=' '>
           {children}
         </main>
       </div>
