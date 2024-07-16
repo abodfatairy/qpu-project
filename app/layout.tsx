@@ -12,16 +12,13 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-
 }) {
-
-
   return (
     <html lang={"en"}>
       <body className={` bg-main-6 dark:bg-dark-2`}>
         <ThemeProvider
           attribute='class'
-          defaultTheme='system'
+          defaultTheme='dark'
           enableSystem
           disableTransitionOnChange
         >
@@ -38,7 +35,7 @@ export default function RootLayout({
                 </div>
               }
             >
-                  {children}
+              {children}
             </Suspense>
           </Providers>
         </ThemeProvider>
