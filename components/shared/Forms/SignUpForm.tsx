@@ -11,8 +11,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import CustomButton from "@/components/ui/CustomButton"; 
+import CustomButton from "@/components/ui/CustomButton";
 import { NewUserData } from "@/data/data";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -30,6 +31,7 @@ const formSchema = z.object({
   }),
 });
 export function SignUpForm() {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,10 +48,14 @@ export function SignUpForm() {
     // console.log(values);
 
     const newUser = await NewUserData(values);
+    if (newUser) {
+      toast({
+        description: "cheack your email",
+      });
+    }
     // console.log(newUser);
     if (!newUser) {
       console.log("first");
-      
     }
   }
   return (

@@ -3,20 +3,13 @@ import MobileHeader from "./MobileHeader";
 import Link from "next/link";
 import DarkMode from "./DarkMode";
 import Cart from "./Cart";
-
-// import {  userToken } from "@/data";
 import ProfileAvatar from "./ProfileAvatar";
 import { userToken } from "@/auth";
 
 
-// import { userToken } from "@/data/data";
-
 const Header = ({ profile }: { profile?: boolean }) => {
-  // const value = localStorage.getItem("user") || "";
-  const user = userToken();
-  
 
-  // console.log(user,'userrrrrrrrrrrrr');
+  const user = userToken();
 
   return (
     <>

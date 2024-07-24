@@ -14,7 +14,7 @@ const variants = {
   visible: { opacity: 1 },
 };
 
-let isMe = true;
+let isMe = false;
 
 const Card = ({ item, index }: { item: Products; index: number }) => {
   return (
@@ -68,7 +68,6 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
             </p>
           </div>
           <div className=' flex items-center justify-between   gap-1   '>
-            
             {/* <AddToCartButton item={item} /> */}
             {/* <BuyButton
               item={item}
