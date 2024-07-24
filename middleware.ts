@@ -5,12 +5,30 @@ export function middleware(req: NextRequest) {
   // @ts-ignore
   const { user, data } = userToken();
   const auth = user ? true : false;
-//   console.log(data.roles, "dara");
-  if (auth && data.roles == "SuperAdmin") {
-    return NextResponse.next();
+
+  if (
+    auth &&
+    data.roles !== "SuperAdmin" &&
+    req.url === "https://qpu-project.vercel.app/admin"
+  ) {
+    return NextResponse.redirect(new URL("/", req.url));
   }
-  return NextResponse.redirect(new URL("/", req.url));
+  if (!auth && req.url === "https://qpu-project.vercel.app/admin") {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+  //
+  if (!auth && req.url === "https://qpu-project.vercel.app/products/create") {
+    return NextResponse.redirect(new URL("/block", req.url));
+  }
+  if (
+    auth &&
+    data.roles == "User" &&
+    req.url === "https://qpu-project.vercel.app/products/create"
+  ) {
+    return NextResponse.redirect(new URL("/block", req.url));
+  }
+  return NextResponse.next();
 }
-export const config = {
-  matcher: ["/admin"],
-};
+// export const config = {
+//   matcher: ["/admin"],
+// };

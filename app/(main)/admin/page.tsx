@@ -1,6 +1,7 @@
 import { userToken } from "@/auth";
-import { AdminTable } from "@/components/shared/Admin/AdminTable";
+
 import Card from "@/components/shared/Admin/Card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
   GetAllProducts,
@@ -10,6 +11,10 @@ import {
 } from "@/data/data";
 import { CiUser } from "react-icons/ci";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { columns } from "@/components/shared/Admin/table/Columns";
+import { ProducColumns } from "@/components/shared/Admin/table/ProductColumns";
+import { DataTable } from "@/components/shared/Admin/table/AdminTable";
+import { ProductTable } from "@/components/shared/Admin/table/ProductTable";
 
 const page = async () => {
   // @ts-ignore
@@ -36,7 +41,37 @@ const page = async () => {
           count={products.length > 0 ? products.length : 0}
         />
       </div>
-      <AdminTable />
+      <Tabs defaultValue='Users'>
+        <TabsList className=' bg-dark-2 border-slate-700 '>
+          <TabsTrigger
+            value='Products'
+            className=' b border-slate-700 border'
+          >
+            Products
+          </TabsTrigger>
+          <TabsTrigger
+            value='Users'
+            className=' border-slate-700 border'
+          >
+            Users
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value='Users'>
+          <DataTable
+            data={users}
+            columns={columns}
+          />
+        </TabsContent>
+        <TabsContent
+          value='Products'
+          className=' text-white'
+        >
+          <ProductTable
+            data={products}
+            columns={ProducColumns}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

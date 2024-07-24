@@ -2,7 +2,7 @@ import AddToCartButton from "@/components/shared/AddToCartButton";
 import BuyButton from "@/components/shared/BuyButton";
 import Test from "@/components/shared/Test";
 import { AuroraBackgroundDemo } from "@/components/ui/teeest";
-import { getDataById } from "@/data";
+
 import { GetProductByID } from "@/data/data";
 import { Products, ProductsProps } from "@/types";
 import Image from "next/image";
@@ -33,7 +33,7 @@ const ProductDetails = async ({
                     alt=''
                   />
                 </div>
-                <div className=' flex items-center gap-12 '>
+                <div className=' flex items-center gap-12 z-50 '>
                   <Test data={product.image2!} />
                   <Test data={product.image3!} />
                   <Test data={product.image4!} />

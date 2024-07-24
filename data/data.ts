@@ -1,5 +1,7 @@
+
 import { NewUser } from "@/types";
 import axios from "axios";
+
 export const Login = async ({
   email,
   password,
@@ -90,6 +92,26 @@ export const GetUserById = async (token: string, id: number) => {
   try {
     const res = await fetch(
       `https://ourstorre.runasp.net/api/Users/${id}
+`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.json();
+  } catch (error) {
+    console.log(error, "error");
+  }
+};
+export const GetRolesById = async (token: string, id: number) => {
+  // console.log('Token:',token,'ID:',id,);
+
+  try {
+    const res = await fetch(
+      `https://ourstorre.runasp.net/api/Users/GetUserRoles?userId${id}
 `,
       {
         method: "GET",

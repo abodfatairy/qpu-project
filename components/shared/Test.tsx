@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Test = ({ data }: { data?: string }) => {
   return (
-    <>
+    <div className=" z-50">
       {data ? (
         <Dialog>
           <DialogTrigger className=''>
@@ -28,7 +28,7 @@ const Test = ({ data }: { data?: string }) => {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 

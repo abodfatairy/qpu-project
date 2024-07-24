@@ -1,4 +1,4 @@
-import { Products, ProductsProps } from "@/types";
+import { ProductsProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { CiStar } from "react-icons/ci";
@@ -8,7 +8,6 @@ import BuyButton from "./BuyButton";
 import AddToCartButton from "./AddToCartButton";
 import { CiEdit } from "react-icons/ci";
 import { userToken } from "@/auth";
-import { deleteProduct } from "@/data/data";
 import DeleteButton from "./DeleteButton";
 const variants = {
   hidden: {
@@ -17,16 +16,13 @@ const variants = {
   visible: { opacity: 1 },
 };
 
-
 const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
   // @ts-ignore
   const { data, user } = userToken();
-  console.log(user,'user');
-  // const deletee = await deleteProduct(user, item.id);
 
-  // console.log(data.ID, item.userId, data.ID);
-  //   console.log(item[0].name, "babt");
-  let isMe = (item.userId as number) == (data.ID as number) ? true : false;
+  let isMe;
+  data ? (item.userId! === data.ID ? (isMe = true) : false) : "";
+  // = item.userId! == data.ID ? true : false;
   // ;
   return (
     <MotionDiv
@@ -96,7 +92,6 @@ const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
             <CiEdit className=' text-white text-lg#020617  md:text-3xl' />
           </Link>
 
-          
           <DeleteButton
             user={user}
             item={item.id}

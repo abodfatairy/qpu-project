@@ -25,6 +25,7 @@ export type User = {
   secondAddressDescription?: string;
   email: string;
   phoneNumber: string;
+  roles: string;
 };
 export type UserData = {
   userId: number;
