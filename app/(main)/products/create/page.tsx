@@ -1,11 +1,24 @@
-import { ProductForm } from "@/components/shared/ProductForm";
+import { userToken } from "@/auth";
+import { ProductForm } from "@/components/shared/Forms/ProductForm"; 
+import { GetCategoreies } from "@/data/data";
 import React from "react";
 
-const page = () => {
+const page = async () => {
+  // @ts-ignore
+  const { data, user } = userToken();
+  console.log(data);
+  const categories = await GetCategoreies();
+  console.log(categories);
+
   return (
-    <div className='  '>
+    <div className='  z-50 '>
       <div className=' mt-[100px]  p-10 '>
-        <ProductForm type='Create' />
+        <ProductForm
+          type='Create'
+          userid={data.ID}
+          token={user}
+          Categories={categories}
+        />
       </div>
     </div>
   );

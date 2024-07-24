@@ -1,4 +1,5 @@
 "use client";
+import { User } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -8,7 +9,7 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 import { PiSignInLight } from "react-icons/pi";
 
-const ProfileSideBar = ({ id }: { id?: number }) => {
+const ProfileSideBar = ({ id }: { id?: string; userDetails: User }) => {
   const ProfileLinks = [
     {
       name: "Profile",
@@ -23,14 +24,14 @@ const ProfileSideBar = ({ id }: { id?: number }) => {
     {
       name: "Setting",
       icon: <CiSettings />,
-      href: `/profile/${id}/settings`,
+      href: `/settings/${id}`,
     },
   ];
   const pathname = usePathname();
   return (
     <>
-      <div className=' w-[250px] z-20 fixed top-0 left-0'>
-        <div className=' pl-5  flex flex-col w-[250px] fixed  '>
+      <div className=' w-[250px] z-20 fixed top-0 left-0 '>
+        <div className=' pl-5  flex flex-col w-[250px] fixed bg-dark-2 '>
           <div className=' py-10  text-white'>Profile</div>
           <div className='h-[calc(100vh-110px)] '>
             {ProfileLinks.map((item) => {
@@ -71,7 +72,7 @@ const ProfileSideBar = ({ id }: { id?: number }) => {
               className=''
             >
               <div className=' flex items-center gap-2  border-t border-main-4'>
-                <PiSignInLight className=" text-white" />
+                <PiSignInLight className=' text-white' />
                 <p className=' font-medium text-white'>sign in</p>
               </div>
             </Link>

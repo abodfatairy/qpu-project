@@ -1,7 +1,7 @@
-import { CartItem, Products } from "@/types";
-import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
+import { CartItem, } from "@/types";
+import {  createSelector, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { number } from "zod";
+
 
 export interface CartState {
   cartItems: CartItem[];
@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
   reducers: {
     increment: (state, action) => {
       const itemExist = state.cartItems.find(
-        (el) => el.product._id === action.payload._id
+        (el) => el.product.id === action.payload.id
       );
       if (itemExist) {
         itemExist.qty++;
@@ -30,14 +30,14 @@ export const cartSlice = createSlice({
     },
     decrement: (state, action) => {
       const itemExist = state.cartItems.find(
-        (el) => el.product._id === action.payload._id
+        (el) => el.product.id === action.payload.id
       );
       if (itemExist) {
         itemExist.qty--;
       }
       if (itemExist?.qty === 0) {
         state.cartItems = state.cartItems.filter(
-          (el) => el.product._id !== action.payload._id
+          (el) => el.product.id !== action.payload.id
         );
       }
     },
@@ -61,7 +61,7 @@ export const TotalPrice = createSelector([cartItems], (cartItems) =>
 export const productQty = createSelector(
   [cartItems, (cartItems, productId: number) => productId],
   (cartItems, productId) =>
-    cartItems.find((el) => el.product._id === productId)?.qty
+    cartItems.find((el) => el.product.id === productId)?.qty
 );
 
 export const { increment, decrement } = cartSlice.actions;

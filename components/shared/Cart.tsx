@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import { LiaShoppingBagSolid } from "react-icons/lia";
-import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/redux/store";
 import { TotalPrice, totalCartItemsQty } from "@/redux/features/cartSlice";
@@ -18,11 +17,12 @@ import { Separator } from "../ui/separator";
 import CustomButton from "../ui/CustomButton";
 
 const Cart = () => {
+
+  
   // number of Products in Cart
   const qty = useAppSelector(totalCartItemsQty);
   // products inside Card
   const cartItems = useAppSelector((state) => state.cart.cartItems);
- 
 
   const Router = useRouter();
   const totalPrice = useAppSelector(TotalPrice);
@@ -42,15 +42,19 @@ const Cart = () => {
           className=' dark:bg-dark-2 w-screen overflow-y-scroll '
         >
           <SheetHeader>
-            <SheetTitle className=' text-center dark:text-white'>Logo</SheetTitle>
+            <SheetTitle className=' text-center dark:text-white'>
+              Logo
+            </SheetTitle>
             <SheetDescription className=''>
-              <SheetTrigger className=" absolute top-6 right-5 text-white text-xl">X</SheetTrigger>
+              <SheetTrigger className=' absolute top-6 right-5 text-white text-xl'>
+                X
+              </SheetTrigger>
               {cartItems.length > 0 ? (
                 <div className=''>
                   {cartItems?.map((item) => (
                     <div
                       className=' '
-                      key={item.product._id}
+                      key={item.product.id}
                     >
                       <CartItem
                         item={item.product}
@@ -58,7 +62,7 @@ const Cart = () => {
                       />
                     </div>
                   ))}
-                  <Separator className="mt-4" />
+                  <Separator className='mt-4' />
                   <div className=' flex items-center justify-between mt-4'>
                     <p className=' text-main-1 text-xl'>Total Price is:</p>
                     <p className='text-red-400'>
@@ -79,15 +83,13 @@ const Cart = () => {
                     height={60}
                     className=''
                   />
-                
-          
-                    <SheetTrigger>
-                      <CustomButton
-                        title='Continue Shopping'
-                        onClick={() => Router.push("/products")}
-                      />{" "}
-                    </SheetTrigger>
-           
+
+                  <SheetTrigger>
+                    <CustomButton
+                      title='Continue Shopping'
+                      onClick={() => Router.push("/products")}
+                    />{" "}
+                  </SheetTrigger>
                 </div>
               )}
             </SheetDescription>

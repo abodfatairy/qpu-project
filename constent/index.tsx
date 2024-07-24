@@ -9,11 +9,7 @@ export const links = [
   {
     label: "Products",
     link:   `/products/`,
-  },
-  {
-    label: "Profile",
-    link: `/profile/${0}`,
-  },
+  }
 ];
 export const ProfileLinks = [
   {

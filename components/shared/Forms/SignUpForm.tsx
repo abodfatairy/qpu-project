@@ -1,10 +1,7 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,43 +11,46 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import CustomButton from "../ui/CustomButton";
+import CustomButton from "@/components/ui/CustomButton"; 
+import { NewUserData } from "@/data/data";
 
 const formSchema = z.object({
-  fullname: z.string().min(3, {
-    message: "fullname must be at least 3 characters.",
+  name: z.string().min(3, {
+    message: "name must be at least 3 characters.",
   }),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
-  number: z.number().min(10, {
-    message: "number must be at least 10 characters.",
-  }),
+  phoneNumber: z.string(),
   email: z.string().email().min(8, {
     message: "email must be at least 2 characters.",
   }),
-  addrses: z.string().min(8, {
+  firstAddress: z.string().min(8, {
     message: "email must be at least 2 characters.",
   }),
- 
 });
 export function SignUpForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "",
-      password: "",
       email: "",
-      addrses: "",
-      number: 0,
+      name: "",
+      firstAddress: "",
+      phoneNumber: "",
+      password: "",
     },
   });
   // ...
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // console.log(values);
+
+    const newUser = await NewUserData(values);
+    // console.log(newUser);
+    if (!newUser) {
+      console.log("first");
+      
+    }
   }
   return (
     <Form {...form}>
@@ -68,6 +68,7 @@ export function SignUpForm() {
                 <Input
                   placeholder='example@example.com'
                   {...field}
+                  className='dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -76,7 +77,7 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name='fullname'
+          name='name'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Full name</FormLabel>
@@ -84,6 +85,7 @@ export function SignUpForm() {
                 <Input
                   placeholder='example:Ahmad'
                   {...field}
+                  className='dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -101,6 +103,7 @@ export function SignUpForm() {
                   type='password'
                   placeholder='*********'
                   {...field}
+                  className='dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -109,7 +112,7 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name='number'
+          name='phoneNumber'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Phone Number</FormLabel>
@@ -117,6 +120,7 @@ export function SignUpForm() {
                 <Input
                   placeholder='0912345678'
                   {...field}
+                  className='dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -125,7 +129,7 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name='addrses'
+          name='firstAddress'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Addrses</FormLabel>
@@ -133,14 +137,18 @@ export function SignUpForm() {
                 <Input
                   placeholder='example:damas'
                   {...field}
+                  className='dark:text-black'
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
-        /> 
+        />
 
-        <CustomButton title='Sign up' className="w-full " />
+        <CustomButton
+          title='Sign up'
+          className='w-full '
+        />
         {/* <Button
           type='submit'
           className=' mt-2'

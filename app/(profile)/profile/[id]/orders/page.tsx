@@ -2,7 +2,13 @@ import Back from "@/components/shared/Back";
 import OrderCard from "@/components/shared/OrderCard";
 import React from "react";
 
-const OrdersPage = () => {
+const OrdersPage = ({
+  searchParams,
+}: {
+  searchParams: string;
+}) => {
+  console.log(searchParams,'asd');
+
   return (
     <div className=' flex flex-col gap-2'>
       <div className=''>

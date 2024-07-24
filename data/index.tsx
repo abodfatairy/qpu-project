@@ -1,6 +1,4 @@
-"use server";
-
-// import { Products } from "@/types";/''
+// import { cookies } from "next/headers";
 
 export const getData = async () => {
   try {

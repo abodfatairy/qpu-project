@@ -1,10 +1,10 @@
 
-import { SignUpForm } from "@/components/shared/SignUpForm";
+import { SignUpForm } from "@/components/shared/Forms/SignUpForm";
 import { SparklesPreview } from "@/components/ui/Spark";
 import Link from "next/link";
 import React from "react";
 
-const SignUp = () => {
+const SignUp =  () => {
   return (
     <div className=' w-screen md:h-screen flex'>
       {/* <SparklesCore /> */}

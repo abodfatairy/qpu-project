@@ -1,4 +1,4 @@
-import { ProductForm } from "@/components/shared/ProductForm";
+import { ProductForm } from "@/components/shared/Forms/ProductForm";
 import { getDataById } from "@/data";
 import { Products } from "@/types";
 import React from "react";

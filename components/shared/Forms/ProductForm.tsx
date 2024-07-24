@@ -14,56 +14,98 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FileUploader } from "./FileUploader";
+import { FileUploader } from "../FileUploader";
 import { useState } from "react";
-import { convertFileToUrl } from "@/lib/utils";
-import { Products } from "@/types";
+import { categories, Products, ProductsProps } from "@/types";
+import { CreateProduct } from "@/data/data";
+import { CategorySelcet } from "../CategorySelect";
+import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 const formSchema = z.object({
-  title: z.string().min(3, {
+  name: z.string().min(3, {
     message: "product Name must be at least 3 characters.",
   }),
-  image: z.string(),
-  productImg2: z.string(),
-  productImg3: z.string(),
-  productImg4: z.string(),
+  image1: z.string(),
+  image2: z.string(),
+  image3: z.string(),
+  image4: z.string(),
   brand: z.string(),
-  price: z.number(),
-  previousPrice: z.number(),
-  category: z.string(),
+  price: z.string(),
+  discount: z.string(),
+  categoryId: z.string(),
   description: z.string(),
 });
 const productDefaultValues = {
-  title: "",
+  name: "",
   brand: "",
-  price: 0,
-  previousPrice: 0,
-  category: "",
-  image: "",
-  productImg2: "",
-  productImg3: "",
-  productImg4: "",
+  price: "",
+  discount: "",
+  categoryId: "",
+  image1: "",
+  image2: "",
+  image3: "",
+  image4: "",
   description: "",
 };
 
 type ProductFormProps = {
   type: "Create" | "Update";
   product?: Products;
+  userid?: number;
+  token?: string;
+  Categories?: categories[];
 };
-export function ProductForm({ type, product }: ProductFormProps) {
-  const [files, setFiles] = useState<File[]>([]);
-  const initialValues =
-    product && type === "Update" ? product : productDefaultValues;
+export function ProductForm({
+  type,
+  product,
+  userid,
+  token,
+  Categories,
+}: ProductFormProps) {
+  const router = useRouter();
+  const [image1, setimage1] = useState<File[]>([]);
+  const [image2, setimage2] = useState<File[]>([]);
+  const [image3, setimage3] = useState<File[]>([]);
+  const [image4, setimage4] = useState<File[]>([]);
+  const initialValues = type === "Update" ? product : productDefaultValues;
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    // @ts-ignore
     defaultValues: initialValues,
   });
   // ...
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    const formData = new FormData();
+    if (type === "Create") {
+      formData.append("Name", values.name);
+      formData.append("Description", values.description);
+      formData.append("Image1", image1[0]);
+      formData.append("Image2", image2[0]);
+      formData.append("Image3", image3[0]);
+      formData.append("Image4", image4[0]);
+      //@ts-ignore
+      formData.append("price", values.price);
+      formData.append("categoryId", values.categoryId);
+      // @ts-ignore
+      formData.append("userid", userid);
+      formData.append("Brand", values.brand);
+      formData.append("discount", values.discount);
+    }
+    try {
+      // @ts-ignore
+      const create = CreateProduct(token, formData);
+
+      router.push("/products");
+      revalidatePath("/products");
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   return (
     <Form {...form}>
       <form
@@ -72,7 +114,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
       >
         <FormField
           control={form.control}
-          name='title'
+          name='name'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Name</FormLabel>
@@ -91,7 +133,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
         <div className='flex justify-around items-center p-5  flex-col md:flex-row'>
           <FormField
             control={form.control}
-            name='image'
+            name='image1'
             render={({ field }) => (
               <FormItem className=' w-fit '>
                 <FormLabel>Product Image</FormLabel>
@@ -99,7 +141,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
                   <FileUploader
                     onFieldChange={field.onChange}
                     imageUrl={field.value}
-                    setFiles={setFiles}
+                    setFiles={setimage1}
                   />
                 </FormControl>
                 <FormMessage />
@@ -108,7 +150,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
           />
           <FormField
             control={form.control}
-            name='productImg2'
+            name='image2'
             render={({ field }) => (
               <FormItem className=' w-fit '>
                 <FormLabel>Other Product Image</FormLabel>
@@ -116,7 +158,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
                   <FileUploader
                     onFieldChange={field.onChange}
                     imageUrl={field.value}
-                    setFiles={setFiles}
+                    setFiles={setimage2}
                   />
                 </FormControl>
                 <FormMessage />
@@ -126,7 +168,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
 
           <FormField
             control={form.control}
-            name='productImg3'
+            name='image3'
             render={({ field }) => (
               <FormItem className=' w-fit '>
                 <FormLabel>Other Product Image</FormLabel>
@@ -134,7 +176,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
                   <FileUploader
                     onFieldChange={field.onChange}
                     imageUrl={field.value}
-                    setFiles={setFiles}
+                    setFiles={setimage3}
                   />
                 </FormControl>
                 <FormMessage />
@@ -143,7 +185,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
           />
           <FormField
             control={form.control}
-            name='productImg4'
+            name='image4'
             render={({ field }) => (
               <FormItem className=' w-fit '>
                 <FormLabel>Other Product Image</FormLabel>
@@ -151,7 +193,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
                   <FileUploader
                     onFieldChange={field.onChange}
                     imageUrl={field.value}
-                    setFiles={setFiles}
+                    setFiles={setimage4}
                   />
                 </FormControl>
                 <FormMessage />
@@ -184,6 +226,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
               <FormLabel>Price</FormLabel>
               <FormControl>
                 <Input
+                  type='number'
                   className=' placeholder:text-slate-300 text-black'
                   placeholder='000'
                   {...field}
@@ -212,7 +255,7 @@ export function ProductForm({ type, product }: ProductFormProps) {
         />
         <FormField
           control={form.control}
-          name='previousPrice'
+          name='discount'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Previous Price</FormLabel>
@@ -229,15 +272,16 @@ export function ProductForm({ type, product }: ProductFormProps) {
         />
         <FormField
           control={form.control}
-          name='category'
+          name='categoryId'
           render={({ field }) => (
             <FormItem className=' '>
-              <FormLabel>Category</FormLabel>
+              <FormLabel>categoryName</FormLabel>
               <FormControl>
-                <Input
-                  className=' placeholder:text-slate-300 text-black'
-                  placeholder=''
-                  {...field}
+                <CategorySelcet
+                  onChangeHandler={field.onChange}
+                  value={field.value}
+                  // @ts-ignore
+                  Categories={Categories}
                 />
               </FormControl>
               <FormMessage />

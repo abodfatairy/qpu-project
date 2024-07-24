@@ -10,7 +10,12 @@ export default function ProductLayout({
     <div className='  flex flex-col '>
       <Header />
       <main className=' mt-20 flex-1  '>
-        <AuroraBackgroundDemo>{children}</AuroraBackgroundDemo>
+        {/* <AuroraBackgroundDemo> */}
+          <div className=" z-50">
+
+          {children}
+          </div>
+        {/* </AuroraBackgroundDemo> */}
       </main>
  
     </div>

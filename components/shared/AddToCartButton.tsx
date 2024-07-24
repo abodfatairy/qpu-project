@@ -1,11 +1,11 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Button } from "../ui/button";
-import { Products } from "@/types";
+import { Products, ProductsProps } from "@/types";
 import { increment, productQty } from "@/redux/features/cartSlice";
 
-const AddToCartButton = ({ item }: { item: Products }) => {
-  const qty = useAppSelector((state) => productQty(state, item._id));
+const AddToCartButton = ({ item }: { item: ProductsProps }) => {
+  const qty = useAppSelector((state) => productQty(state, item.id));
   const dispatch = useAppDispatch();
   return (
     <Button

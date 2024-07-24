@@ -10,7 +10,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import CustomButton from "../ui/CustomButton";
+import CustomButton from "@/components/ui/CustomButton";
+import { Login } from "@/data/data";
+import { useRouter, redirect } from "next/navigation";
+import { getCookie, setCookie } from "cookies-next";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -19,6 +23,8 @@ const formSchema = z.object({
   }),
 });
 export function SignInForm() {
+    const { toast } = useToast();
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -28,10 +34,23 @@ export function SignInForm() {
     },
   });
   // ...
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit({ email, password }: z.infer<typeof formSchema>) {
+    const isLoged = await Login({ email, password });
+    // console.log(isLoged, "heres");
+
+    isLoged && setCookie("user", isLoged);
+    const user = getCookie("user");
+    
+    if (user) {
+      router.push("/");
+  toast({
+    description: "weclome ",
+
+  });
+    }
+    
+
+    // console.log(email);
   }
   return (
     <Form {...form}>
@@ -49,6 +68,7 @@ export function SignInForm() {
                   className=' '
                   placeholder='example@example.com'
                   {...field}
+                  autoComplete=''
                 />
               </FormControl>
               <FormMessage />

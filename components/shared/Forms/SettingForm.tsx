@@ -1,9 +1,7 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,83 +12,103 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { UploadButton } from "@/lib/uploadthing";
-// import { UploadDropzone } from "@uploadthing/react";
-import { FileUploader } from "./FileUploader";
+import { FileUploader } from "../FileUploader"; 
 import { useState } from "react";
+import { User } from "@/types";
+import { EditUser } from "@/data/data";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast"; 
+import { revalidatePath } from "next/cache";
 
 const formSchema = z.object({
-  fullname: z.string().min(3, {
-    message: "fullname must be at least 3 characters.",
-  }),
-  profilePhoto: z.string(),
-
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-  number: z.string(),
-  email: z.string().email().min(8, {
-    // message: "email must be at least 2 characters.",
-  }),
-  mainAddrse: z.string().min(8, {
-    // message: "email must be at least 2 characters."
-  }),
-  mainAddrseDesc: z.string().min(8, {
-    // message: "email must be at least 2 characters.",
-  }),
-  secAddrse: z.string().min(8, {
-    // message: "email must be at least 2 characters.",
-  }),
-  secAddrseDesc: z.string().min(8, {
-    // message: "email must be at least 2 characters.",
-  }),
+  name: z.string(),
+  image: z.string(),
+  phoneNumber: z.string(),
+  firstAddress: z.string(),
+  firstAddressDescription: z.string(),
+  secondAddress: z.string(),
+  secondAddressDescription: z.string(),
 });
-export function SettingForm() {
+const UserDefValues = {
+  name: "",
+  image: "",
+  firstAddress: "",
+  firstAddressDescription: "",
+  secondAddress: "",
+  secondAddressDescription: "",
+  phoneNumber: "",
+};
+export function SettingForm({
+  userData,
+  user,
+}: {
+  userData?: User;
+  user?: string;
+}) {
+  const { toast } = useToast();
+  const router = useRouter();
+  const userId = userData?.id as string;
   const [files, setFiles] = useState<File[]>([]);
+  // console.log(files[0]);
+
+  // const { startUpload } = useUploadThing("imageUploader");
+  const initialValues = userData ? userData : UserDefValues;
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullname: "",
-      password: "",
-      email: "",
-      mainAddrse: "",
-      mainAddrseDesc: "",
-      secAddrse: "",
-      secAddrseDesc: "",
-      profilePhoto: "",
-      number: "",
-    },
+    defaultValues: initialValues,
   });
   // ...
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function submit({
+    name,
+    firstAddress,
+    phoneNumber,
+    firstAddressDescription,
+    secondAddress,
+    secondAddressDescription,
+    image,
+  }: z.infer<typeof formSchema>) {
+    const form = new FormData();
+    form.append("name", `${name}`);
+    form.append("firstAddress", `${firstAddress}`);
+    form.append("firstAddressDescription", `${firstAddressDescription}`);
+    form.append("secondAddress", `${secondAddress}`);
+    form.append("secondAddressDescription", `${secondAddressDescription}`);
+    form.append("phoneNumber", `${phoneNumber}`);
+    form.append("image", files[0]);
+    form.append("userId", `${userId}`);
+ 
 
+    try {
+      // @ts-ignore
+      const updateUser = await EditUser(user, form);
+
+      if (updateUser) {
+        toast({
+          description: "updated successfully",
+        });
+        router.push(`/`);
+        revalidatePath("/");
+      } else {
+        toast({
+          description: "updated successfully",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
+  //
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(submit)}
         className='  dark:text-dark-4 space-y-3 text-slate-400  mb-6'
       >
         <FormField
           control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem className=' '>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder='example@example.com'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='profilePhoto'
+          name='image'
           render={({ field }) => (
             <FormItem className=' w-fit '>
               <FormLabel>Profile Image</FormLabel>
@@ -107,7 +125,7 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='fullname'
+          name='name'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Full name</FormLabel>
@@ -115,6 +133,7 @@ export function SettingForm() {
                 <Input
                   placeholder='example:Ahmad'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -123,31 +142,15 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='password'
+          name='phoneNumber'
           render={({ field }) => (
             <FormItem className=' '>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  type='password'
-                  placeholder='*********'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='number'
-          render={({ field }) => (
-            <FormItem className=' '>
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel>Phone phoneNumber</FormLabel>
               <FormControl>
                 <Input
                   placeholder='0912345678'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -156,14 +159,15 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='mainAddrse'
+          name='firstAddress'
           render={({ field }) => (
             <FormItem className=' '>
-              <FormLabel>mainAddrse</FormLabel>
+              <FormLabel>firstAddress</FormLabel>
               <FormControl>
                 <Input
                   placeholder='example:damas'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -172,7 +176,7 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='mainAddrseDesc'
+          name='firstAddressDescription'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>main Addrse desc</FormLabel>
@@ -180,6 +184,7 @@ export function SettingForm() {
                 <Input
                   placeholder='example:damas'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -188,7 +193,7 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='secAddrse'
+          name='secondAddress'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Second Addrse</FormLabel>
@@ -196,6 +201,7 @@ export function SettingForm() {
                 <Input
                   placeholder='example:damas'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />
@@ -204,7 +210,7 @@ export function SettingForm() {
         />
         <FormField
           control={form.control}
-          name='secAddrseDesc'
+          name='secondAddressDescription'
           render={({ field }) => (
             <FormItem className=' '>
               <FormLabel>Second Addrse Desc</FormLabel>
@@ -212,6 +218,7 @@ export function SettingForm() {
                 <Input
                   placeholder='example:damas'
                   {...field}
+                  className=' dark:text-black'
                 />
               </FormControl>
               <FormMessage />

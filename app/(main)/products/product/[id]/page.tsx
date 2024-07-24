@@ -3,16 +3,17 @@ import BuyButton from "@/components/shared/BuyButton";
 import Test from "@/components/shared/Test";
 import { AuroraBackgroundDemo } from "@/components/ui/teeest";
 import { getDataById } from "@/data";
-import { Products } from "@/types";
+import { GetProductByID } from "@/data/data";
+import { Products, ProductsProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 
 const ProductDetails = async ({
   params: { id },
 }: {
-  params: { id: string };
+  params: { id: number };
 }) => {
-  const product = (await getDataById(id)) as Products;
+  const product = (await GetProductByID(id)) as ProductsProps;
 
   return (
     <AuroraBackgroundDemo>
@@ -26,16 +27,16 @@ const ProductDetails = async ({
               <div className=''>
                 <div className=' mb-3'>
                   <Image
-                    src={product?.image}
+                    src={product?.image1}
                     width={400}
                     height={200}
                     alt=''
                   />
                 </div>
                 <div className=' flex items-center gap-12 '>
-                  <Test data={product.image!} />
-                  <Test data={product.image!} />
-                  <Test data={"/assets/images/3.jpg"} />
+                  <Test data={product.image2!} />
+                  <Test data={product.image3!} />
+                  <Test data={product.image4!} />
                 </div>
               </div>
             </div>
@@ -49,11 +50,11 @@ const ProductDetails = async ({
 
                   <div className=' flex  justify-between items-center  '>
                     <h2 className=' text-blue-800 font-sans'>
-                      {product.title}
+                      {product.name}
                     </h2>
                     <div className=''>
                       <Image
-                        src={product?.image}
+                        src={product?.image1}
                         width={100}
                         height={10}
                         alt=''
@@ -72,7 +73,7 @@ const ProductDetails = async ({
                   </h1>
                   <div className=' ml-5'>
                     <p className=' line-through text-gray-400 text-xl font-serif'>
-                      ${product?.previousPrice}
+                      ${product?.discount}
                     </p>
                     <p className=' text-blue-500 text-2xl font-serif'>
                       ${product?.price}
@@ -82,7 +83,7 @@ const ProductDetails = async ({
                 <div className=' flex items-center justify-between pt-[50px]'>
                   <p className=' font-medium text-xl text-red-500'>
                     you&apos;re saving : $
-                    {product.previousPrice! - product.price!}
+                    {product.discount! - product.price!}
                   </p>
                   <BuyButton
                     item={product}

@@ -1,27 +1,35 @@
-
 import Image from "next/image";
 import { FaLocationDot, FaPhoneFlip } from "react-icons/fa6";
-import { testDataProfile } from "@/constent";
 import { MdAlternateEmail } from "react-icons/md";
 import ProfileSideBar from "@/components/shared/ProfileSideBar";
-const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
-  const data = testDataProfile[id];
+import { userToken } from "@/auth";
+import { GetUserById } from "@/data/data";
+import { User } from "@/types";
+const ProfilePage = async ({ params: { id } }: { params: { id: string } }) => {
+  // @ts-ignore
+  const { user, data } = userToken();
+  // @ts-ignore
+  const userDetails = (await GetUserById(user, id)) as User;
+  console.log(userDetails, "profile");
 
-  const isMe = true;
+  const isMe = data.ID === id;
   return (
     <>
       {isMe ? (
         <div className=' hidden lg:flex '>
-          <ProfileSideBar id={id} />
+          <ProfileSideBar
+            id={id}
+            userDetails={userDetails}
+          />
         </div>
       ) : (
         ""
       )}
 
-      {data ? (
-        <div className=' container  relative lg:max-w-[750px]  xl:max-w-[1024px]      mt-5 flex flex-col   items-center  flex-1  bg-red   '>
+      {userDetails ? (
+        <div className=' container  relative lg:max-w-[750px]  xl:max-w-[1024px]      mt-5 flex flex-col   items-center  flex-1    '>
           {/* cover image */}
-          <div className=' w-screen h-52  absolute sm:max-w-[800px] lg:max-w-[750px]  xl:max-w-[1024px]   lg:ml-52   '>
+          <div className=' w-screen h-52  absolute sm:max-w-[800px] lg:max-w-[750px]  xl:max-w-[1024px]   lg:ml-52    '>
             <Image
               src={"/assets/images/accessories.jpg"}
               alt=''
@@ -29,14 +37,14 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
               className=' object-cover object-center'
             />
           </div>
-          <div className=' absolute top-[150px]  '>
+          <div className=' absolute top-[150px]   '>
             {/* first section */}
             <div className=' flex lg:justify-between  max-w-[1024px] w-screen items-center gap-5   overflow-hidden lg:ml-52 mb-4 flex-col lg:flex-row '>
               {/* profile image */}
               <div className=' w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] lg:mb-8 lg:ml-44 xl:ml-20  '>
                 <div className=' absolute w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden '>
                   <Image
-                    src={data.image || "/assets/images/no-profile.webp"}
+                    src={userDetails.image || "/assets/images/no-profile.webp"}
                     alt=''
                     fill
                     className=' object-cover object-center'
@@ -47,12 +55,12 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
               <div className=' flex flex-col items-start justify-center     lg:mr-7'>
                 {/* name */}
                 <h1 className='   text-3xl lg:text-5xl dark:text-white capitalize mb-1 lg:mr-32 '>
-                  {data.name}
+                  {userDetails.name}
                 </h1>
                 {/* location */}
                 <div className=' flex items-center justify-center gap-x-1 text-slate-400 '>
                   <FaLocationDot />
-                  <p className=''>{data.firstAddres}</p>
+                  <p className=''>{userDetails.firstAddress}</p>
                 </div>
               </div>
               {/* address */}
@@ -71,7 +79,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                     <FaPhoneFlip className=' text-main-1' /> :
                   </span>
                   <span className=' text-white font-normal ml-11'>
-                    {data.phoneNumber}
+                    {userDetails.phoneNumber}
                   </span>
                 </div>
                 {/* location */}
@@ -80,7 +88,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                     <FaLocationDot className=' text-main-1' /> :
                   </span>
                   <span className=' text-white font-normal ml-11'>
-                    {data.firstAddres}
+                    {userDetails.firstAddress}
                   </span>
                 </div>
                 {/* email */}
@@ -89,7 +97,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                     <MdAlternateEmail className=' text-main-1' /> :
                   </span>
                   <span className=' text-white font-normal ml-11'>
-                    {data.email}
+                    {userDetails.email}
                   </span>
                 </div>
               </div>
@@ -109,7 +117,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                   <div className='flex items-center justify-between mb-4'>
                     {/* first addres title */}
                     <h1 className=' text-main-1 text-[14px] capitalize lg:text-lg '>
-                      {data.firstAddres}
+                      {userDetails.firstAddress}
                     </h1>
                     <h2 className=' bg-blue-100 p-2 tracking-wider rounded text-[11px] lg:text-sm text-blue-500 font-bold '>
                       Primary
@@ -119,7 +127,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                   <div className=' flex items-center justify-between border-b border-slate-200'>
                     <p className=' text-slate-500 '>details:</p>
                     <p className=' capitalize text-slate-400 '>
-                      {data.firstAddresDesc}
+                      {userDetails.firstAddressDescription}
                     </p>
                   </div>
                 </div>
@@ -130,7 +138,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                   <div className='flex items-center justify-between mb-4'>
                     {/* second adders title */}
                     <h1 className=' text-main-1  text-[14px] capitalize lg:text-lg mr-2'>
-                      {data.secondAddres}
+                      {userDetails.secondAddress}
                     </h1>
 
                     <h2 className=' bg-green-100 p-2 tracking-wider rounded text-[11px] lg:text-sm  text-blue-500 font-bold '>
@@ -141,7 +149,7 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
                   <div className=' flex items-center justify-between border-b border-slate-200'>
                     <p className=' text-slate-500'>details:</p>
                     <p className=' capitalize text-slate-400'>
-                      {data.secondAddresDesc}
+                      {userDetails.secondAddressDescription}
                     </p>
                   </div>
                 </div>
@@ -150,11 +158,11 @@ const ProfilePage = ({ params: { id } }: { params: { id: number } }) => {
           </div>
         </div>
       ) : (
-        <div className=' flex flex-col items-center h-screen '>
-          <p className=' capitalize text-main-1 text-3xl font-mono '>
+        <div className=' flex flex-col items-center h-screen  '>
+          <p className=' capitalize text-main-1 text-3xl font-mono mt-12  '>
             No profile found
           </p>
-          <div className='absolute w-[400px] h-[200px] top-[80px]'>
+          <div className='absolute w-[400px] h-[200px] top-[200px]'>
             <Image
               src={"/assets/images/no-profile-found.png"}
               alt=''

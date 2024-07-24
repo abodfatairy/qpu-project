@@ -1,18 +1,11 @@
-
 import HeroBanner from "@/components/shared/HerroBanner";
 import HomeCard from "@/components/shared/HomeCard";
 import { SpotlightPreview } from "@/components/ui/Light";
 import { CategorysNames } from "@/constent";
-
-export default function Home({
-  searchParams,
-}: {
-  searchParams: { id: string | undefined };
-}) {
+export default async function Home() {
   return (
     <main className=' mt-11  md:mt-52 h-screen  '>
       <SpotlightPreview>
-        {/* <Banner /> */}
         <div className=' flex flex-col'>
           <HeroBanner />
           <div className=' '>
