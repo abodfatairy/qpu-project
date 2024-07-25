@@ -106,7 +106,13 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
         href={"/"}
         className=' dark:text-white'
       >
-        logo
+        <Image
+          src={"/assets/images/logo.png"}
+          alt='logo'
+          width={100}
+          height={100}
+          className=''
+        />
       </Link>
       <div className=''>
         <Cart />
