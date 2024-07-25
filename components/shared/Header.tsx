@@ -5,6 +5,7 @@ import DarkMode from "./DarkMode";
 import Cart from "./Cart";
 import ProfileAvatar from "./ProfileAvatar";
 import { userToken } from "@/auth";
+import Image from "next/image";
 
 
 const Header = ({ profile }: { profile?: boolean }) => {
@@ -13,13 +14,19 @@ const Header = ({ profile }: { profile?: boolean }) => {
 
   return (
     <>
-      <div className='  fixed top-5  left-[50%] translate-x-[-50%]    bg-main-2 dark:bg-dark-2 border border-slate-600  rounded-full   hidden md:flex z-40  p-2   '>
-        <div className=' md:mx-auto md:flex  justify-between items-center '>
+      <div className='  fixed top-5  left-[50%] translate-x-[-50%]    bg-main-2 dark:bg-dark-2 border border-slate-600  rounded-full   hidden md:flex z-40  p-2 items-center     '>
+        <div className=' md:mx-auto md:flex  justify-between  '>
           <Link
             href={"/"}
-            className=' text-white'
+            className=' text-white border-r flex items-center'
           >
-            logo
+            <Image
+              src={"/assets/images/logo.png"}
+              alt='logo'
+              width={100}
+              height={100}
+              className=""
+            />
           </Link>
           <div className=''>
             <Categorys />

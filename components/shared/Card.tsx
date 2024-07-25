@@ -31,7 +31,7 @@ const Card = ({ item, index }: { item: Products; index: number }) => {
       className='  flex flex-col   w-40 md:w-96 h-64 md:h-auto   max-w-[450px] shadow-sm rounded-xl  bg-yellow-50/10 dark:bg-dark-2 relative border-slate-200 border'
     >
       <Link
-        href={`/products/product/${item?._id}`}
+        href={`#`}
         className='w-40 h-32 md:w-96 md:h-72  md:max-h-[300px] select-none overflow-hidden  '
       >
         <div className='absolute w-40 h-40 md:w-96 md:h-72  '>

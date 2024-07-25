@@ -4,6 +4,7 @@ import Link from "next/link";
 import DarkMode from "./DarkMode";
 import Cart from "./Cart";
 import Search from "./Search";
+import Image from "next/image";
 
 const Header2 = ({ profile }: { profile?: boolean }) => {
   return (
@@ -14,7 +15,7 @@ const Header2 = ({ profile }: { profile?: boolean }) => {
             href={"/"}
             className=' text-white'
           >
-            logo
+        
           </Link>
           <div className=''>
             <Categorys />

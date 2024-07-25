@@ -14,6 +14,7 @@ import { ProfileLinks, links } from "@/constent";
 import Cart from "./Cart";
 import DarkMode from "./DarkMode";
 import Search from "./Search";
+import Image from "next/image";
 
 const MobileHeader = ({ profile }: { profile?: boolean }) => {
   const pathname = usePathname();
@@ -28,8 +29,17 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
             side={"left"}
             className='  dark:bg-dark-2 '
           >
-            <SheetHeader className=''>
-              <SheetTitle>Logo</SheetTitle>
+            <SheetHeader className='flex items-center '>
+              <SheetTitle className=" ">
+                {" "}
+                <Image
+                  src={"/assets/images/logo.png"}
+                  alt='logo'
+                  width={100}
+                  height={100}
+                  className=''
+                />
+              </SheetTitle>
               <SheetDescription>
                 <div className=' dark:bg-dark-2'>
                   <Search />
@@ -37,6 +47,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
               </SheetDescription>
 
               <div className=' flex flex-col gap-3 items-center overflow-hidden text-black   '>
+                <span className=" text-white">Sign in</span>
                 {links.map((link, index) => {
                   const isActive = link.link === pathname;
                   return (
@@ -57,6 +68,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                   );
                 })}
                 <DarkMode />
+                
               </div>
 
               {profile && (
