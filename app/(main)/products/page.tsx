@@ -35,7 +35,7 @@ const ProductsPage = async ({
       <SideBar data={data} />
       <div className=' flex flex-col container justify-center items-center md:mt-4 p-5'>
         <AuroraBackgroundDemo>
-          <div className=' absolute top-0 right-0'>
+          <div className=' absolute top-0 right-[200px]'>
             <Search />
           </div>
           {/* REAL data */}

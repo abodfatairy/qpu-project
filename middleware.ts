@@ -27,6 +27,16 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/block", req.url));
   }
+  if (!auth && req.url === "http://localhost:3000/products/create") {
+    return NextResponse.redirect(new URL("/block", req.url));
+  }
+  if (
+    auth &&
+    data.roles == "User" &&
+    req.url === "http://localhost:3000/products/create"
+  ) {
+    return NextResponse.redirect(new URL("/block", req.url));
+  }
   return NextResponse.next();
 }
 // export const config = {

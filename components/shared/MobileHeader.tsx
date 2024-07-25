@@ -30,7 +30,7 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
             className='  dark:bg-dark-2 '
           >
             <SheetHeader className='flex items-center '>
-              <SheetTitle className=" ">
+              <SheetTitle className=' '>
                 {" "}
                 <Image
                   src={"/assets/images/logo.png"}
@@ -47,7 +47,12 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
               </SheetDescription>
 
               <div className=' flex flex-col gap-3 items-center overflow-hidden text-black   '>
-                <span className=" text-white">Sign in</span>
+                <Link
+                  href={"/sign-in"}
+                  className=' text-white'
+                >
+                  Sign in
+                </Link>
                 {links.map((link, index) => {
                   const isActive = link.link === pathname;
                   return (
@@ -68,7 +73,6 @@ const MobileHeader = ({ profile }: { profile?: boolean }) => {
                   );
                 })}
                 <DarkMode />
-                
               </div>
 
               {profile && (
