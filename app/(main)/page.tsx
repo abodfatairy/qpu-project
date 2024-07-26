@@ -2,14 +2,14 @@ import HeroBanner from "@/components/shared/HerroBanner";
 import HomeCard from "@/components/shared/HomeCard";
 import { SpotlightPreview } from "@/components/ui/Light";
 import { CategorysNames } from "@/constent";
+import Image from "next/image";
 export default async function Home() {
   return (
-    <main className=' mt-11  md:mt-52 h-[84vh] md:h-screen  '>
-      
+    <main className=' mt-11  md:mt-52  md:h-screen  '>
       <SpotlightPreview>
-        <div className=' flex flex-col'>
+        <div className=' flex flex-col mt-96   '>
           <HeroBanner />
-          <div className=' '>
+          <div className=' flex items-center flex-col  '>
             <div className=' container grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3      mt-3  xl:ml-auto  gap-3  md:h-auto'>
               {CategorysNames.map((item) => (
                 <div
@@ -20,8 +20,16 @@ export default async function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          
+          <Image
+            src={"/assets/images/mobile.png"}
+            alt='mobile app'
+            width={1100}
+            height={1100}
+            />
+            </div>
         </div>
+        
       </SpotlightPreview>
     </main>
   );

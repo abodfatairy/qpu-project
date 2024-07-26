@@ -9,15 +9,12 @@ export default function MainLayout({
   return (
     <div className='  flex flex-col '>
       <Header />
-       <main className=' mt-4 flex-1 '>
-     
-
+       <main className=' mt-4 '>
      {children}
- 
      </main>
-      <div className=''>
-        <Footer />
-      </div>
+    
+        {/* <Footer /> */}
+     
     </div>
   );
 }
