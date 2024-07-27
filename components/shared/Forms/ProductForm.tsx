@@ -21,6 +21,7 @@ import { CreateProduct } from "@/data/data";
 import { CategorySelcet } from "../CategorySelect";
 import { useRouter } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -63,6 +64,7 @@ export function ProductForm({
   token,
   Categories,
 }: ProductFormProps) {
+  const { toast } = useToast();
   const router = useRouter();
   const [image1, setimage1] = useState<File[]>([]);
   const [image2, setimage2] = useState<File[]>([]);
@@ -77,7 +79,7 @@ export function ProductForm({
     defaultValues: initialValues,
   });
   // ...
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     const formData = new FormData();
     if (type === "Create") {
@@ -95,14 +97,18 @@ export function ProductForm({
       formData.append("Brand", values.brand);
       formData.append("discount", values.discount);
     }
-    try {
-      // @ts-ignore
-      const create = CreateProduct(token, formData);
 
+    // @ts-ignore
+    const created = await CreateProduct(token, formData);
+    if (created) {
       router.push("/products");
-      revalidatePath("/products");
-    } catch (error) {
-      console.log(error);
+      // revalidatePath("/products");
+    }
+    if (!created) {
+      toast({
+        description: "somthing went wrong",
+        variant: "destructive",
+      });
     }
   }
 

@@ -55,7 +55,10 @@ export function SignUpForm() {
     }
     // console.log(newUser);
     if (!newUser) {
-      console.log("first");
+      toast({
+        description: "somthing went wrong!",
+        variant: "destructive",
+      });
     }
   }
   return (

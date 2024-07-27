@@ -44,7 +44,14 @@ export function SignInForm() {
     if (user) {
       router.push("/");
   toast({
-    description: "weclome ",
+    description: "welcome ",
+
+  });
+    }
+    if (!user) {
+  toast({
+    description: "email or the password is wrong",
+    variant:'destructive'
 
   });
     }

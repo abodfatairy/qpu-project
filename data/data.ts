@@ -1,4 +1,3 @@
-
 import { NewUser } from "@/types";
 import axios from "axios";
 
@@ -18,7 +17,7 @@ export const Login = async ({
       }
     );
     if (res.status !== 200) {
-      console.log("error");
+      return null;
     } else {
       return res.data.token;
     }
@@ -154,8 +153,9 @@ export const CreateProduct = async (token: string, user: any) => {
       body: user,
     });
 
-    // console.log(res, "here");
-
+    if (res.status !== 200) {
+      return null;
+    }
     return res;
   } catch (error) {
     console.log(error, "error");
@@ -194,8 +194,11 @@ export const NewUserData = async (user: NewUser) => {
       method: "POST",
       body: data,
     });
-
-    return res;
+    if (res.status !== 200) {
+      return null;
+    } else {
+      return res;
+    }
   } catch (error) {
     console.log(error);
   }

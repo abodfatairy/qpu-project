@@ -23,21 +23,25 @@ export function CategorySelcet({
   return (
     <Select
       onValueChange={onChangeHandler}
-          defaultValue={value}
-        
+      defaultValue={value}
+      
     >
-      <SelectTrigger className='w-[180px] text-dark-2'>
-        <SelectValue placeholder='Select a ctegory' />
+      <SelectTrigger className='w-[180px] text-dark-2 '>
+        <SelectValue
+          placeholder='Select a ctegory '
+          className=' text-black'
+        />
       </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          {/* <SelectLabel>Fruits</SelectLabel> */}
+      <SelectContent className='text-black'>
+        <SelectGroup className=" text-black">
+       
           {Categories.map((item: categories) => (
-              <SelectItem
-                  className="text-dark-2"
+            <SelectItem
+              className='text-black'
               value={item.id}
               key={item.id}
             >
+              
               {item.name}
             </SelectItem>
           ))}

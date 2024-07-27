@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { MotionDiv } from "./MotionDiv";
 import BuyButton from "./BuyButton";
 import AddToCartButton from "./AddToCartButton";
-import { CiEdit } from "react-icons/ci";
+// import { CiEdit } from "react-icons/ci";
 import { userToken } from "@/auth";
 import DeleteButton from "./DeleteButton";
 const variants = {
@@ -21,9 +21,8 @@ const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
   const { data, user } = userToken();
 
   let isMe;
-  data ? (item.userId! === data.ID ? (isMe = true) : false) : "";
-  // = item.userId! == data.ID ? true : false;
-  // ;
+  data ? (item.userId! === data.ID ? (isMe = true) : (isMe = false)) : "";
+
   return (
     <MotionDiv
       variants={variants}
@@ -85,12 +84,12 @@ const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
       </div>
       {isMe && (
         <div className='absolute top-5 right-6 flex  gap-5 '>
-          <Link
+          {/* <Link
             href={`/products/product/${item?.id}/update`}
             className='  bg-dark-2 p-2 rounded-full'
           >
             <CiEdit className=' text-white text-lg#020617  md:text-3xl' />
-          </Link>
+          </Link> */}
 
           <DeleteButton
             user={user}

@@ -16,6 +16,16 @@ export function middleware(req: NextRequest) {
   if (!auth && req.url === "https://qpu-project.vercel.app/admin") {
     return NextResponse.redirect(new URL("/", req.url));
   }
+  if (
+    auth &&
+    data.roles !== "SuperAdmin" &&
+    req.url === "http://localhost:3000/admin"
+  ) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+  if (!auth && req.url === "http://localhost:3000/admin") {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
   //
   if (!auth && req.url === "https://qpu-project.vercel.app/products/create") {
     return NextResponse.redirect(new URL("/block", req.url));
