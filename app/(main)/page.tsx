@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <main className=' mt-11  md:mt-52  md:h-screen  '>
       <SpotlightPreview>
-        <div className=' flex flex-col mt-96   '>
+        <div className=' flex flex-col md:mt-96   '>
           <HeroBanner />
           <div className=' flex items-center flex-col  '>
             <div className=' container grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3      mt-3  xl:ml-auto  gap-3  md:h-auto'>
