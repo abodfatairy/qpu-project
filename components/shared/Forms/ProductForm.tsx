@@ -299,7 +299,7 @@ export function ProductForm({
           type='submit'
           className=' mt-2'
         >
-          Edit
+          Create
         </Button>
       </form>
     </Form>

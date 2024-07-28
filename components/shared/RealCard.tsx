@@ -19,9 +19,14 @@ const variants = {
 const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
   // @ts-ignore
   const { data, user } = userToken();
-
+  const auth = user ? true : false;
+  let CanBey;
+  auth && data.roles === "SuperAdmin" ? (CanBey = true) : (CanBey = false);
   let isMe;
-  data ? (item.userId! === data.ID ? (isMe = true) : (isMe = false)) : "";
+
+  data && item.userId! === parseInt(data.ID) ? (isMe = true) : (isMe = false);
+  console.log(isMe);
+  console.log(item.userId!, data.ID);
 
   return (
     <MotionDiv
@@ -73,13 +78,15 @@ const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
               {item?.price}
             </p>
           </div>
-          <div className=' flex items-center justify-between   gap-1   '>
-            <AddToCartButton item={item} />
-            <BuyButton
-              item={item}
-              qty={1}
-            />
-          </div>
+          {CanBey && (
+            <div className=' flex items-center justify-between   gap-1   '>
+              <AddToCartButton item={item} />
+              <BuyButton
+                item={item}
+                qty={1}
+              />
+            </div>
+          )}
         </div>
       </div>
       {isMe && (

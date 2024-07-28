@@ -11,6 +11,7 @@ const ProfilePage = async ({ params: { id } }: { params: { id: string } }) => {
   // @ts-ignore
   const userDetails = (await GetUserById(user, id)) as User;
   console.log(userDetails, "profile");
+console.log(data);
 
   const isMe = data.ID === id;
   return (

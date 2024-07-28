@@ -6,7 +6,7 @@ import React from "react";
 const SignIn = () => {
   return (
     <div className=' w-screen flex'>
-      <div className=' bg-white/50 dark:bg-slate-950 p-10  flex items-center justify-center flex-col relative w-screen max-w-4xl shadow-2xl    border border-slate-700 h-screen '>
+      <div className=' bg-white/50 dark:bg-slate-950 p-10  flex items-center justify-center flex-col relative w-screen max-w-4xl shadow-2xl    border-r border-slate-700 h-screen '>
         <Image
           src={"/assets/images/logo.png"}
           alt='logo'

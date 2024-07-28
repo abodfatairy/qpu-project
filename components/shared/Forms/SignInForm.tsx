@@ -15,6 +15,8 @@ import { Login } from "@/data/data";
 import { useRouter, redirect } from "next/navigation";
 import { getCookie, setCookie } from "cookies-next";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -23,7 +25,9 @@ const formSchema = z.object({
   }),
 });
 export function SignInForm() {
-    const { toast } = useToast();
+  const [forget, setForget] = useState(false);
+
+  const { toast } = useToast();
   const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,22 +44,20 @@ export function SignInForm() {
 
     isLoged && setCookie("user", isLoged);
     const user = getCookie("user");
-    
+
     if (user) {
       router.push("/");
-  toast({
-    description: "welcome ",
-
-  });
+      toast({
+        description: "welcome ",
+      });
     }
     if (!user) {
-  toast({
-    description: "email or the password is wrong",
-    variant:'destructive'
-
-  });
+      setForget(true);
+      toast({
+        description: "email or the password is wrong",
+        variant: "destructive",
+      });
     }
-    
 
     // console.log(email);
   }
@@ -104,6 +106,16 @@ export function SignInForm() {
           type='submit'
         />
       </form>
+      {forget ? (
+        <Link
+          href={"/reset-password"}
+          className=' text-white flex items-center justify-center mt-5'
+        >
+          Forget Password?
+        </Link>
+      ) : (
+        ""
+      )}
     </Form>
   );
 }
