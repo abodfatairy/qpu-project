@@ -41,7 +41,7 @@ const ProductsPage = async ({
           {/* REAL data */}
           <div className=' md:flex-1 grid mt-9 grid-cols-2  md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 gap-x-10 '>
             {Products.length > 0 &&
-              Products.map((item: ProductsProps, index: any) => {
+              Products.reverse().map((item: ProductsProps, index: any) => {
                 return (
                   <div
                     className=''
