@@ -21,7 +21,7 @@ const RealCard = ({ item, index }: { item: ProductsProps; index: number }) => {
   const { data, user } = userToken();
   const auth = user ? true : false;
   let CanBey;
-  auth && data.roles === "SuperAdmin" ? (CanBey = true) : (CanBey = false);
+  auth && data.roles !== "User" ? (CanBey = true) : (CanBey = false);
   let isMe;
 
   data && item.userId! === parseInt(data.ID) ? (isMe = true) : (isMe = false);
